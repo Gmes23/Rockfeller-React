@@ -12,11 +12,13 @@ import styled from 'styled-components';
 
 import Header from 'components/Header';
 import Footer from 'components/Footer';
+import LeftContainer from 'components/LeftContainerProfile';
 import withProgressBar from 'components/ProgressBar';
 
 const AppWrapper = styled.div`
   max-width: 100%;
   margin: 0 auto;
+  height: 100vh;
   display: flex;
   min-height: 100vh;
   padding: 0;
@@ -34,8 +36,9 @@ export function App(props) {
         ]}
       />
       <Header />
-      {React.Children.toArray(props.children)}
-      <Footer />
+      <LeftContainer />
+      {/*{React.Children.toArray(props.children)}*/}
+      {/*<Footer />*/}
     </AppWrapper>
   );
 }

@@ -6,7 +6,6 @@ const Container = styled.div`
   width: 125px;
   border-radius: 8px;
   border: solid 2px rgb(254,0,0);
-  background: rgb(1,168,158);
   text-align: center;
   padding-top: 7px;
 `;
@@ -20,7 +19,7 @@ const Logo_h1 = styled.h1`
 `;
 
 const Span_text = styled.span`
-  border-bottom: solid 2.88px #fe0000;
+  border-bottom: solid 1.88px #fe0000;
   display: inherit;
   padding-bottom: 5px;
 `;
@@ -29,7 +28,7 @@ const Logo_h2 = styled.h2`
   font-style: normal;
   font-weight: 600;
   margin-bottom: -10px;
-  font-size: 4.2em;
+  font-size: 3.2em;
   margin-top: 0px;
 `;
 

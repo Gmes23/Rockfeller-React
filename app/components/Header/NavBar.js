@@ -5,8 +5,7 @@ export default styled.div`
   padding-left: 4%;
   padding-right: 4%;
   padding-top: 30px;
-  padding-bottom: 103px;
+  padding-bottom: 60px;
   height: 250px;
-  background-color: red;
   display: flex;
 `;

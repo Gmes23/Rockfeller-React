@@ -4,7 +4,6 @@ import styled from 'styled-components';
 const My_logo = styled.div`
   height: 149px;
   width: 155px;
-  background: rgb(1,168,158);
   text-align: end;
 `;
 

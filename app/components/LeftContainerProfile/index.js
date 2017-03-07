@@ -2,17 +2,8 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components';
 
-import A from './A';
-import Img from './Img';
-import NavBar from './NavBar';
-import HeaderLink from './HeaderLink';
-import Banner from './banner.jpg';
-import messages from './messages';
 import Logo from '../Logo/Logo';
-import CalendarWidget from '../Calendar/Calendar';
-import FeaturesNav from '../FeaturesNav/FeaturesNav';
-import LanguageOption from '../Language/LanguageOption';
-import SearchBar from '../SearchBar/SearchBar';
+import ProfileContainer from './profile';
 
 const Right_navcontainer = styled.div`
   width: 100%;
@@ -21,21 +12,28 @@ const Right_navcontainer = styled.div`
   padding-left: 155px;
   padding-top: 13px;
   display: flex;
-`
+`;
 
-class Header extends React.Component { // eslint-disable-line react/prefer-stateless-function
+const Wrapper = styled.div`
+  width: 20%;
+  padding-left: 4%;
+  padding-right: 4%;
+  padding-top: 4%;
+  height:  100vh;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+`;
+
+class LeftContainer extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
 
-          <NavBar> 
-             <Logo />
-             <Right_navcontainer>
-                <CalendarWidget />
-                <FeaturesNav />
-                <LanguageOption />
-                <SearchBar />
-             </Right_navcontainer>
-          </NavBar>
+          <Wrapper> 
+             <ProfileContainer />
+          </Wrapper>
   
       
       // <div> helo </div>
@@ -56,4 +54,4 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
   }
 }
 
-export default Header;
+export default LeftContainer;

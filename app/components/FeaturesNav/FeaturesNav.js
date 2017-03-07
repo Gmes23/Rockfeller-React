@@ -4,13 +4,10 @@ import styled from 'styled-components';
 const Container = styled.div`
   height: 100%;
   width: 165px;
-  background: rgb(1,168,158);
-  padding-top: 7px;
-  margin-left: 10%;
+  margin-left: 8%;
 `;
 
 const BottomContainer = styled.div`
-  background-color: yellow;
   width: 100%;
   height: 74%;
   padding-top: 20px;
@@ -19,7 +16,6 @@ const BottomContainer = styled.div`
 const Selection = styled.div`
   width: 100%;
   height: 21px;
-  background-color: purple;
   display: flex;
 `;
 
@@ -32,9 +28,8 @@ const Logo_h1 = styled.h1`
 `;
 
 const Span_text = styled.span`
-  border-bottom: solid 3px #fe0000;
+  border-bottom: solid 2px #fe0000;
   display: inherit;
-  padding-bottom: 7px;
 `;
 
 const Logo_h2 = styled.h2`
