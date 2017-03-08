@@ -9,7 +9,7 @@ const Container = styled.div`
 
 const CurrentActions = styled.div`
   width: 100%;
-  padding-left: 27%;
+  padding-left: 19%;
   display: flex;
 `;
 
@@ -69,8 +69,7 @@ class HomePage extends Component {
            <HomePageResult />
            <HomePageResult />
            <HomePageResult />
-           <HomePageResult />
-           
+
         </Container>
         );
   }

@@ -11,7 +11,6 @@ const Wrapper = styled.div`
   width: 86.69%;
   padding-right: 4%;
   padding-left: 153px;
-  background-color: gray;
 `;
 
 class MainActionContainer extends React.Component { // eslint-disable-line react/prefer-stateless-function
