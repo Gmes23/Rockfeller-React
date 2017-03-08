@@ -20,6 +20,7 @@ const Right_navcontainer = styled.div`
   // might change to percentage later on
   padding-left: 155px;
   padding-top: 13px;
+  padding-bottom: 44px;
   display: flex;
 `
 

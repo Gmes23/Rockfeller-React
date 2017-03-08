@@ -61,7 +61,7 @@ const My_profile = styled.p`
   color: rgb(191,191,191);
 `;
 
-const Test = styled.a`
+const Alink= styled.a`
   vertical-align: text-bottom;
 `;
 
@@ -79,7 +79,7 @@ class ProfileContainer extends Component {
                 <Span />
             </Username_container>
             <Profile_icon>
-                <Test  className="material-icons">person</Test >
+                <Alink  className="material-icons">person</Alink >
                 <My_profile> My Profile </My_profile>
             </Profile_icon>
         </Container>

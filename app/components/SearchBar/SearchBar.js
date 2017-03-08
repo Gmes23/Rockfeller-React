@@ -30,9 +30,16 @@ const InputIcon = styled.div`
    float: right;
    height: 100%;
    margin-left: 5%;
-   width: 20%;
+   width: 11%;
    border-bottom: 2px solid red;
+   padding-top: 40px;
 `;
+
+const Icon_eyeglass = styled.a`
+  font-size: 3.5em;
+`;
+
+
 
 class SearchBar extends Component {
   render() {
@@ -40,7 +47,7 @@ class SearchBar extends Component {
         <Container>
           <InputSearch placeholder="Search" type="text" />
           <InputIcon>
-          <i className="material-icons">search</i>
+            <Icon_eyeglass className="material-icons">search</Icon_eyeglass>
            </InputIcon>
         </Container>
         );

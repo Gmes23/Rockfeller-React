@@ -2,28 +2,24 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components';
 
-import Logo from '../Logo/Logo';
-import SocialLinks from '../SocialLinks/social_links';
-import ProfileContainer from './profile';
-import LinksContainer from './about_links';
-
+import HomePage from './homepage';
 
 const Wrapper = styled.div`
-  width: 20%;
-  padding-left: 4%;
+  position: absolute;
+  right: 0px
+  top: 210px;
+  width: 86.69%;
   padding-right: 4%;
-  // height:  100vh;
-
+  padding-left: 153px;
+  background-color: gray;
 `;
 
-class LeftContainer extends React.Component { // eslint-disable-line react/prefer-stateless-function
+class MainActionContainer extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
 
           <Wrapper> 
-             <ProfileContainer />
-             <LinksContainer />
-             <SocialLinks />
+             <HomePage />
           </Wrapper>
   
       
@@ -45,4 +41,4 @@ class LeftContainer extends React.Component { // eslint-disable-line react/prefe
   }
 }
 
-export default LeftContainer;
+export default MainActionContainer;
