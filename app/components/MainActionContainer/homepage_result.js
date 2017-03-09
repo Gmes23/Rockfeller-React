@@ -16,6 +16,8 @@ const DateResultWrap = styled.div`
   width:  11%;
   height: 100%;
   background-color: red;
+  text-align: center;
+  padding-top: 30px;
 `;
 
 const ResultImgWrap = styled.div`
@@ -64,11 +66,53 @@ const ResultDescriptionPCont = styled.div`
   font-weight: 100;
  `;
 
+ const DateResult_h1 = styled.h1`
+  color: white;
+  margin: 0px;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+ `;
+
+  const DateResult_p = styled.p`
+  margin: 0px;
+  color: white;
+  font-weight: 600;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+ `;
+
+  const DateResult_p2 = styled.p`
+  margin: 0px;
+  color: white;
+    font-family: tablet-gothic, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+ `;
+
+
+ const Span = styled.span`
+  position: absolute;
+  border-bottom: solid 1.5px white;
+  width: 20px;
+`;
+
+const SpanDiv = styled.div`
+  width: 100%;
+  padding-right: 15%;
+`;
+
 class HomePageResult extends Component {
   render() {
     return (
         <Container>
-            <DateResultWrap />
+            <DateResultWrap>
+              <DateResult_h1 > 26 </DateResult_h1 >
+              <DateResult_p>August</DateResult_p>
+              <DateResult_p>2016</DateResult_p>
+              <SpanDiv>
+              <Span />
+              </SpanDiv>
+              <DateResult_p2>JD</DateResult_p2>
+
+            </DateResultWrap>
             <ResultImgWrap>
               <Img src={PlaceholderB} alt="something" />
             </ResultImgWrap>

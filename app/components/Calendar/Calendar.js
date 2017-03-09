@@ -24,7 +24,7 @@ const Span_text = styled.span`
   padding-bottom: 5px;
 `;
 const Logo_h2 = styled.h2`
-  font-family: tablet-gothic, sans-serif;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: 600;
   margin-bottom: -10px;
