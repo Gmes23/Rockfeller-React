@@ -10,6 +10,10 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
 
+
+import request from 'utils/request';
+import { take, call, put, select, cancel, takeLatest } from 'redux-saga/effects';
+
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import LeftContainer from 'components/LeftContainerProfile';
@@ -19,12 +23,13 @@ import withProgressBar from 'components/ProgressBar';
 const AppWrapper = styled.div`
   max-width: 100%;
   margin: 0 auto;
-  height: 100vh;
   display: flex;
-  min-height: 100vh;
   padding: 0;
   flex-direction: column;
 `;
+// http://app.ticketmaster.com/discovery/v1/events.json?keyword=Queen&apikey=xxx
+const API_KEY = 'ugDKj6qVDvxl39iQzLiY5VR2c173RABy'; 
+
 
 export function App(props) {
   return (
@@ -38,7 +43,7 @@ export function App(props) {
       />
       <Header />
       <LeftContainer />
-      {/*{React.Children.toArray(props.children)}*/}
+      {React.Children.toArray(props.children)}
       {/*<Footer />*/}
       <MainActionContainer />
     </AppWrapper>

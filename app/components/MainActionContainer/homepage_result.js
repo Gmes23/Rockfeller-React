@@ -82,9 +82,9 @@ const ResultDescriptionPCont = styled.div`
   const DateResult_p2 = styled.p`
   margin: 0px;
   color: white;
-    font-family: tablet-gothic, sans-serif;
-    font-style: normal;
-    font-weight: 400;
+  font-family: tablet-gothic, sans-serif;
+  font-style: normal;
+  font-weight: 400;
  `;
 
 
