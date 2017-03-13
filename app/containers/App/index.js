@@ -20,8 +20,6 @@ import LeftContainer from 'components/LeftContainerProfile';
 import MainActionContainer from 'components/MainActionContainer';
 import withProgressBar from 'components/ProgressBar';
 
-import SearchArtist from 'components'
-
 const AppWrapper = styled.div`
   max-width: 100%;
   margin: 0 auto;
@@ -29,9 +27,6 @@ const AppWrapper = styled.div`
   padding: 0;
   flex-direction: column;
 `;
-// http://app.ticketmaster.com/discovery/v1/events.json?keyword=Queen&apikey=xxx
-const API_KEY = 'ugDKj6qVDvxl39iQzLiY5VR2c173RABy'; 
-
 
 export function App(props) {
   return (

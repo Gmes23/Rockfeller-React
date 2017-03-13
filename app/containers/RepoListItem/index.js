@@ -18,29 +18,31 @@ import Wrapper from './Wrapper';
 
 export class RepoListItem extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
-    const item = this.props.events;
+    const item = this.props.item;
     let nameprefix = '';
 
     // If the repository is owned by a different person than we got the data for
     // it's a fork and we should show the name of the owner
-    if (item !== this.props.currentUser) {
-      nameprefix = `${item}/`;
-    }
+    // if (item.owner.login !== this.props.currentUser) {
+    //   nameprefix = `${item._embedded.events}/`;
+    // }
 
     // Put together the content of the repository
     const content = (
       <Wrapper>
-        <RepoLink href={item} target="_blank">
-    
+        <RepoLink href={item._embedded} target="_blank">
+          {nameprefix + item._embedded}
         </RepoLink>
+        {/*<IssueLink href={`${item._embedded.events}/issues`} target="_blank">
           <IssueIcon />
-        
+          <FormattedNumber value={item._embedded.events} />
+        </IssueLink>*/}
       </Wrapper>
     );
 
     // Render the content into a list item
     return (
-      <ListItem key={`repo-list-item-${events}`} item={events} />
+      <ListItem key={`repo-list-item-${item._embedded}`} item={content} />
     );
   }
 }
