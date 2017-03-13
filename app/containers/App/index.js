@@ -20,6 +20,8 @@ import LeftContainer from 'components/LeftContainerProfile';
 import MainActionContainer from 'components/MainActionContainer';
 import withProgressBar from 'components/ProgressBar';
 
+import SearchArtist from 'components'
+
 const AppWrapper = styled.div`
   max-width: 100%;
   margin: 0 auto;
