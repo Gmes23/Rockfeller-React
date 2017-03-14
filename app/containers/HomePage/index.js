@@ -92,7 +92,7 @@ HomePage.propTypes = {
     React.PropTypes.bool,
   ]),
   repos: React.PropTypes.oneOfType([
-    React.PropTypes.array,
+    React.PropTypes.any,
     React.PropTypes.bool,
   ]),
   onSubmitForm: React.PropTypes.func,

@@ -25,6 +25,7 @@ export function* getRepos() {
     yield put(reposLoaded(repos, username));
   } catch (err) {
     yield put(repoLoadingError(err));
+    console.log9test);
   }
 }
 

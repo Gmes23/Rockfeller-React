@@ -24,25 +24,25 @@ export class RepoListItem extends React.PureComponent { // eslint-disable-line r
     // If the repository is owned by a different person than we got the data for
     // it's a fork and we should show the name of the owner
     // if (item.owner.login !== this.props.currentUser) {
-    //   nameprefix = `${item._embedded.events}/`;
+    //   nameprefix = `${item.name}/`;
     // }
 
     // Put together the content of the repository
     const content = (
       <Wrapper>
-        <RepoLink href={item._embedded} target="_blank">
-          {nameprefix + item._embedded}
+        <RepoLink href={item._embedded.events} target="_blank">
+          {nameprefix + item._embedded.events}
         </RepoLink>
-        {/*<IssueLink href={`${item._embedded.events}/issues`} target="_blank">
+        {/*<IssueLink href={`${item.html_url}/issues`} target="_blank">
           <IssueIcon />
-          <FormattedNumber value={item._embedded.events} />
+          <FormattedNumber value={item.open_issues_count} />
         </IssueLink>*/}
       </Wrapper>
     );
 
     // Render the content into a list item
     return (
-      <ListItem key={`repo-list-item-${item._embedded}`} item={content} />
+      <ListItem key={`repo-list-item-${item._embedded.events}`} item={content} />
     );
   }
 }
