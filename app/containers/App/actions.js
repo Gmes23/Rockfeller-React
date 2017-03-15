@@ -43,7 +43,7 @@ export function loadRepos() {
 export function reposLoaded(repos, username) {
   return {
     type: LOAD_REPOS_SUCCESS,
-     repos,
+     repos: repos._embedded.events,
      username,
   };
 }

@@ -11,6 +11,7 @@ function ReposList({ loading, error, repos }) {
   }
 
   if (error !== false) {
+    console.log(error);
     const ErrorComponent = () => (
       <ListItem item={'Something went wrong, please try again!'} />
     );
