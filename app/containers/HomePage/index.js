@@ -23,9 +23,24 @@ import { loadRepos } from '../App/actions';
 import { changeUsername } from './actions';
 import { makeSelectUsername } from './selectors';
 
+
+import styled from 'styled-components';
+
+const HeaderWrapper = styled.div`
+  width: 100%;
+  padding-left: 4%;
+  padding-right: 4%;
+  padding-top: 30px;
+  padding-bottom: 60px;
+  height: 250px;
+  display: flex;
+`;
+
+
+
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   /**
-   * when initial state username is not null, submit the form to load repos
+   * when initial state artist is not null, submit the form to load repos
    */
   componentDidMount() {
     if (this.props.username && this.props.username.trim().length > 0) {
@@ -42,26 +57,14 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
     };
 
     return (
-      <article>
+      <div>
         <Helmet
           title="Home Page"
           meta={[
-            { name: 'description', content: 'A React.js Boilerplate application homepage' },
+            { name: 'description', content: 'Search upcoming concerts by your favorite Artist' },
           ]}
         />
-        <div>
-          <CenteredSection>
-            <H2>
-              <FormattedMessage {...messages.startProjectHeader} />
-            </H2>
-            <p>
-              <FormattedMessage {...messages.startProjectMessage} />
-            </p>
-          </CenteredSection>
-          <Section>
-            <H2>
-              <FormattedMessage {...messages.trymeHeader} />
-            </H2>
+        <HeaderWrapper>
             <Form onSubmit={this.props.onSubmitForm}>
               <label htmlFor="username">
                 <FormattedMessage {...messages.trymeMessage} />
@@ -77,10 +80,9 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
                 />
               </label>
             </Form>
-            <ReposList {...reposListProps} />
-          </Section>
-        </div>
-      </article>
+        </HeaderWrapper>
+        <ReposList {...reposListProps} />
+      </div>
     );
   }
 }

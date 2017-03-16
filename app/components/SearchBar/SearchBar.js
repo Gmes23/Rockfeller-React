@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { createStructuredSelector } from 'reselect';
+import { makeSelectRepos, makeSelectLoading, makeSelectError } from 'containers/App/selectors';
+
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -10,7 +13,7 @@ const Container = styled.div`
 `;
 
 const InputSearch = styled.input`
-  width: 80%;
+  width: 72%;
   height: 100%;
   text-align: end;
   color: gray;
@@ -41,17 +44,82 @@ const Icon_eyeglass = styled.a`
 
 
 
-class SearchBar extends Component {
+export class SearchBar extends Component {
+  componentDidMount() {
+    if (this.props.artist && this.props.artist.trim().length > 0) {
+      this.props.onSubmitForm();
+    }
+  }
+
   render() {
+    const { loading, error, artistevents } = this.props;
+    const reposListProps = {
+      loading,
+      error,
+      artistevents,
+    };
+
+
     return (
         <Container>
-          <InputSearch placeholder="Search" type="text" />
+          {/*<InputSearch placeholder="Search" type="text" />
           <InputIcon>
             <Icon_eyeglass className="material-icons">search</Icon_eyeglass>
-           </InputIcon>
+           </InputIcon>*/}
+
+              
+            <form onSubmit={this.props.onSubmitForm}>
+              <label htmlFor="artist">
+                <InputSearch
+                  id="Artist"
+                  type="text"
+                  placeholder="Search"
+                  value={this.props.artist}
+                  onChange={this.props.onChangeArtist}
+                />
+                <InputIcon>
+                  <Icon_eyeglass className="material-icons">search</Icon_eyeglass>
+                </InputIcon>
+              </label>
+            </form>
         </Container>
         );
   }
 }
+
+
+
+SearchBar.propTypes = {
+  loading: React.PropTypes.bool,
+  error: React.PropTypes.oneOfType([
+    React.PropTypes.object,
+    React.PropTypes.bool,
+  ]),
+   artistevents: React.PropTypes.oneOfType([
+    React.PropTypes.array,
+    React.PropTypes.bool,
+  ]),
+  onSubmitForm: React.PropTypes.func,
+  artist: React.PropTypes.string,
+  onChangeArtist: React.PropTypes.func,
+};
+
+
+export function mapDispatchToProps(dispatch) {
+  return {
+    onChangeArtist: (evt) => dispatch(changeArtist(evt.target.value)),
+    onSubmitForm: (evt) => {
+      if (evt !== undefined && evt.preventDefault) evt.preventDefault();
+      dispatch(loadRepos());
+    },
+  };
+}
+
+const mapStateToProps = createStructuredSelector({
+  repos: makeSelectRepos(),
+  username: makeSelectUsername(),
+  loading: makeSelectLoading(),
+  error: makeSelectError(),
+});
 
 export default SearchBar;

@@ -30,8 +30,8 @@ export class RepoListItem extends React.PureComponent { // eslint-disable-line r
     // Put together the content of the repository
     const content = (
       <Wrapper>
-        <RepoLink href={item.name} target="_blank">
-          {nameprefix + item._embedded.venues.name}
+        <RepoLink href={item._embedded.venues[0].url} target="_blank">
+          {nameprefix + item._embedded.venues[0].name}
         </RepoLink>
         {/*<IssueLink href={`${item.html_url}/issues`} target="_blank">
           <IssueIcon />

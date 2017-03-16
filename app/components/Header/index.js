@@ -22,7 +22,7 @@ const Right_navcontainer = styled.div`
   padding-top: 13px;
   padding-bottom: 44px;
   display: flex;
-`
+`;
 
 class Header extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
