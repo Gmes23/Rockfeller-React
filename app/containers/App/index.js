@@ -19,6 +19,7 @@ import Footer from 'components/Footer';
 import LeftContainer from 'components/LeftContainerProfile';
 import MainActionContainer from 'components/MainActionContainer';
 import withProgressBar from 'components/ProgressBar';
+import Logo from 'components/Logo/Logo';
 
 const AppWrapper = styled.div`
   max-width: 100%;
@@ -38,11 +39,12 @@ export function App(props) {
           { name: 'description', content: 'A React.js Boilerplate application' },
         ]}
       />
+      <Logo />
       {/*<Header />*/}
       <LeftContainer />
       {React.Children.toArray(props.children)}
       {/*<Footer />*/}
-      <MainActionContainer />
+      {/*<MainActionContainer />*/}
     </AppWrapper>
   );
 }

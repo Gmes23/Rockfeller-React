@@ -24,17 +24,51 @@ import { changeUsername } from './actions';
 import { makeSelectUsername } from './selectors';
 
 
+
 import styled from 'styled-components';
 
-const HeaderWrapper = styled.div`
-  width: 100%;
+const SearchWrapper = styled.div`
+  position: absolute;
+  top: 0px;
+  right: 0px;
   padding-left: 4%;
   padding-right: 4%;
   padding-top: 30px;
   padding-bottom: 60px;
-  height: 250px;
+  height: 200px;
   display: flex;
 `;
+
+const InputSearch = styled.input`
+  width: 90%;
+  height: 100%;
+  text-align: end;
+  color: gray;
+  padding-top: 45px;
+  font-size: 2.8em;
+  outline: 0;
+  border-width: 0 0 2px 0;
+  border-color: red;
+  border-bottom: 2px solid red;
+  font-family: district-pro, sans-serif;
+  font-style: normal;
+  font-weight: 100;
+  margin-left: 10%;
+`;
+
+const InputIcon = styled.div`
+   float: right;
+   height: 100%;
+   margin-left: 5%;
+   width: 11%;
+   border-bottom: 2px solid red;
+   padding-top: 40px;
+`;
+
+const Icon_eyeglass = styled.a`
+  font-size: 3.5em;
+`;
+
 
 
 
@@ -64,23 +98,23 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
             { name: 'description', content: 'Search upcoming concerts by your favorite Artist' },
           ]}
         />
-        <HeaderWrapper>
-            <Form onSubmit={this.props.onSubmitForm}>
+        
+        <SearchWrapper>
+            <form onSubmit={this.props.onSubmitForm}>
               <label htmlFor="username">
-                <FormattedMessage {...messages.trymeMessage} />
-                <AtPrefix>
-                  <FormattedMessage {...messages.trymeAtPrefix} />
-                </AtPrefix>
-                <Input
+                <InputSearch
                   id="username"
                   type="text"
-                  placeholder="mxstbr"
+                  placeholder="Search"
                   value={this.props.username}
                   onChange={this.props.onChangeUsername}
                 />
               </label>
-            </Form>
-        </HeaderWrapper>
+            </form>
+             <InputIcon>
+                  <Icon_eyeglass className="material-icons">search</Icon_eyeglass>
+             </InputIcon>
+        </SearchWrapper>
         <ReposList {...reposListProps} />
       </div>
     );

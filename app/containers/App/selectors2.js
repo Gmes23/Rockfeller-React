@@ -8,7 +8,7 @@ const selectGlobal = (state) => state.get('global');
 
 const makeSelectCurrentArtist = () => createSelector(
   selectGlobal,
-  (globalState) => globalState.get('currentArtist')
+  (globalState) => globalState.get('currentUser')
 );
 
 const makeSelectLoading = () => createSelector(
@@ -21,9 +21,9 @@ const makeSelectError = () => createSelector(
   (globalState) => globalState.get('error')
 );
 
-const makeSelectArtist = () => createSelector(
+const makeSelectArtistEvents = () => createSelector(
   selectGlobal,
-  (globalState) => globalState.getIn(['artistData', 'repositories'])
+  (globalState) => globalState.getIn(['userData', 'repositories'])
 );
 
 const makeSelectLocationState = () => {
@@ -47,6 +47,6 @@ export {
   makeSelectCurrentArtist,
   makeSelectLoading,
   makeSelectError,
-  makeSelectArtist,
+  makeSelectArtistEvents,
   makeSelectLocationState,
 };

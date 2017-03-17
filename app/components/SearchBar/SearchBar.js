@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { createStructuredSelector } from 'reselect';
-import { makeSelectRepos, makeSelectLoading, makeSelectError } from 'containers/App/selectors';
+import { makeSelectRepos, makeSelectLoading, makeSelectError } from 'containers/App/selectors2';
 
 import styled from 'styled-components';
 
@@ -27,6 +27,7 @@ const InputSearch = styled.input`
   font-style: normal;
   font-weight: 100;
   margin-left: 10%;
+  z-index: 1000;
 `;
 
 const InputIcon = styled.div`
@@ -53,7 +54,7 @@ export class SearchBar extends Component {
 
   render() {
     const { loading, error, artistevents } = this.props;
-    const reposListProps = {
+    const artisteventsListProps = {
       loading,
       error,
       artistevents,
@@ -105,21 +106,21 @@ SearchBar.propTypes = {
 };
 
 
-export function mapDispatchToProps(dispatch) {
-  return {
-    onChangeArtist: (evt) => dispatch(changeArtist(evt.target.value)),
-    onSubmitForm: (evt) => {
-      if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-      dispatch(loadRepos());
-    },
-  };
-}
+// export function mapDispatchToProps(dispatch) {
+//   return {
+//     onChangeArtist: (evt) => dispatch(changeArtist(evt.target.value)),
+//     onSubmitForm: (evt) => {
+//       if (evt !== undefined && evt.preventDefault) evt.preventDefault();
+//       dispatch(loadRepos());
+//     },
+//   };
+// }
 
-const mapStateToProps = createStructuredSelector({
-  repos: makeSelectRepos(),
-  username: makeSelectUsername(),
-  loading: makeSelectLoading(),
-  error: makeSelectError(),
-});
+// const mapStateToProps = createStructuredSelector({
+//   artistevents: makeSelectArtistEvents(),
+//   artist: makeSelectArtist(),
+//   loading: makeSelectLoading(),
+//   error: makeSelectError(),
+// });
 
 export default SearchBar;

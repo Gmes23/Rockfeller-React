@@ -9,6 +9,8 @@ import LinksContainer from './about_links';
 
 
 const Wrapper = styled.div`
+  position: absolute;
+  top: 250px;
   width: 20%;
   padding-left: 4%;
   padding-right: 4%;
