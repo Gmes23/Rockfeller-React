@@ -54,6 +54,10 @@ const InputSearch = styled.input`
   font-style: normal;
   font-weight: 100;
   margin-left: 10%;
+
+  &:hover {
+     background-color: #fff; 
+  }
 `;
 
 const InputIcon = styled.div`
@@ -100,14 +104,15 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
         />
         
         <SearchWrapper>
-            <form onSubmit={this.props.onSubmitForm}>
+            <form onSubmit={this.props.onSubmitForm} autoComplete="off">
               <label htmlFor="username">
                 <InputSearch
                   id="username"
                   type="text"
                   placeholder="Search"
                   value={this.props.username}
-                  onChange={this.props.onChangeUsername}
+                  onChange={this.props.onChangeUsername} 
+                  autoComplete="off"
                 />
               </label>
             </form>

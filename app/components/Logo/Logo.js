@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-const My_logo = styled.div`
+import { Link } from 'react-router';
+
+const My_logo = styled(Link)`
   height: 149px;
   width: 155px;
   text-align: end;
+  user-select: none;
+  text-decoration: none;
+  outline: 0;
+  color: inherit;
+  margin: 2%;
 `;
 
 const Logo_h1 = styled.h1`
@@ -24,7 +31,7 @@ const Span_text = styled.span`
 class Logo extends Component {
   render() {
     return (
-        <My_logo>
+        <My_logo to="/">
             <Logo_h1>
               <Span_text> ROCKE </Span_text>
             </Logo_h1>

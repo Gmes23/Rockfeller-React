@@ -47,6 +47,7 @@ const ResultImgWrap = styled.div`
 const ResultDescriptionWrap = styled.div`
   width: 34%;
   height: 100%;
+  overflow: hidden;
 `;
 
 const DescriptionTitle = styled.div`
@@ -75,14 +76,15 @@ const ArrowHiddenIcon = styled.a`
 `;
 
 const ResultDescriptionPCont = styled.div`
-  width: 100%;
   padding-left: 5%;
+  overflow: hidden;
 `;
  
  const ResultDescription_P = styled.p`
   font-family: museo-sans, sans-serif;
   font-style: normal;
-  font-weight: 100;
+  font-weight: 600;
+  font-size: .8em;
  `;
 
  const DateResult_h1 = styled.h1`
@@ -96,7 +98,7 @@ const ResultDescriptionPCont = styled.div`
   color: white;
   font-weight: 600;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 1.4em;
+  font-size: 1.1em;
  `;
 
   const DateResult_p2 = styled.p`
@@ -105,6 +107,8 @@ const ResultDescriptionPCont = styled.div`
   font-family: tablet-gothic, sans-serif;
   font-style: normal;
   font-weight: 400;
+  font-size: 12px;
+  margin-top: 10px;
  `;
 
   const DateResult_p3 = styled.p`
@@ -136,6 +140,14 @@ const PlaceDescription = styled.p`
   font-size: 13px;
 `;
 
+const P_Margin = styled.p`
+  font-family: museo-sans, sans-serif;
+  font-style: normal;
+  font-weight: 100;
+  margin-left: 10px;
+  margin: 0px;
+`;
+
 const months = [ "January", "February", "March", "April", "May", "June",
    "July", "August", "September", "October", "November", "December" ];
 
@@ -146,21 +158,35 @@ export class RepoListItem extends React.PureComponent { // eslint-disable-line r
 
 
     const item = this.props.item;
+
     var dateObj = item.dates.start.localDate;
     var date = dateObj.split('-')[2];
     var year = dateObj.split('-')[0];
     var month = months[parseInt(dateObj.split('-')[1]) - 1];
+
     let nameprefix = '';
+
+    var minPrice = parseInt(item.priceRanges[0].min);
+    var maxPrice = parseInt(item.priceRanges[0].max);
 
     // If the repository is owned by a different person than we got the data for
     // it's a fork and we should show the name of the owner
     // if (item.owner.login !== this.props.currentUser) {
     //   nameprefix = `${item.name}/`;
     // }
-    // if (item.images[0].ratio == '16_9') {
-
+    // if (item.images[0].ratio === '16_9') {
+    //     return item.images[0].url;
+    //     console.log(item.images[0].url);
     // }
-
+    
+  
+    for(var i = 0; i < item.images.length; i++){
+        if(item.images[i].ratio == "16_9" && item.images[i].width == 1024)
+        {
+        var artistcover = item.images[i].url;
+        }
+    }
+ 
     // Put together the content of the repository
     const content = (
 
@@ -179,7 +205,7 @@ export class RepoListItem extends React.PureComponent { // eslint-disable-line r
 
         </DateResultWrap>
             <ResultImgWrap>
-              <Img src={item.images[0].url} alt="something" />
+              <Img src={artistcover} alt="artist_cover" />
             </ResultImgWrap>
             <ResultDescriptionWrap>
                 <DescriptionTitle>
@@ -189,8 +215,15 @@ export class RepoListItem extends React.PureComponent { // eslint-disable-line r
                 </DescriptionTitle>
                 <ResultDescriptionPCont> 
                   <ResultDescription_P>
-                     {item._embedded.attractions[0].name} will be performing at
-                     {item._embedded.venues[0].name}
+                     {item._embedded.attractions[0].name} will be performing at {item._embedded.venues[0].name} for her {item.promoter.name}
+                     <br />
+                     Event starts: {item.dates.start.localTime}, timezone: {item.dates.timezone}
+                     <br />
+                     Please Note: {item.pleaseNote}
+                     <br />
+                     Tickets on sale now for : ${minPrice} - ${maxPrice}
+                    
+                     
                      
                   </ResultDescription_P>
                 </ResultDescriptionPCont>
