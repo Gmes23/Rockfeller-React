@@ -9,7 +9,7 @@ const Container = styled.div`
 
 const CurrentActions = styled.div`
   width: 100%;
-  padding-left: 19%;
+  padding-left: 33%;
   display: flex;
 `;
 
@@ -52,7 +52,7 @@ const DisplayAsVArray = styled.a`
   color: red;
 `;
 
-class HomePage extends Component {
+class ActionBar extends Component {
   render() {
     return (
         <Container>
@@ -66,13 +66,13 @@ class HomePage extends Component {
                    <DisplayAsVArray className="material-icons">view_stream</DisplayAsVArray>
               </DisplayResultSettingContainer>    
            </CurrentActions>
+           {/*<HomePageResult />
            <HomePageResult />
-           <HomePageResult />
-           <HomePageResult />
+           <HomePageResult />*/}
 
         </Container>
         );
   }
 }
 
-export default HomePage;
+export default ActionBar;

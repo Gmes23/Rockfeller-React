@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
+  position: absolute;
+  top: 40px;
+  left: 45%;
   height: 100%;
   width: 130px;
   padding-top: 64.8px;
@@ -27,6 +30,7 @@ const Span_text = styled.span`
   font-family: corporate-s, sans-serif;
   font-style: italic;
   font-weight: 400;
+  font-size: .6em;
 `;
 
 const Select_option = styled.p`
@@ -36,7 +40,7 @@ const Select_option = styled.p`
   color: red;
   margin: 0px;
   float: left;
-  font-size: .85em;
+  font-size: .65em;
 `
 
 const Select_option_2 = styled.p`
@@ -46,7 +50,7 @@ const Select_option_2 = styled.p`
   color: black;
   margin: 0px;
   float: right;
-  font-size: .85em;
+  font-size: .65em;
 `
 
 class LanguageOption extends Component {

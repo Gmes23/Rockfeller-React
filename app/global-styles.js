@@ -32,4 +32,12 @@ injectGlobal`
     margin: 0px;
   }
 
+  .expanded-ticket {
+    height: 550px;
+  }
+
+  .normal-ticket {
+    height: 210px;
+  }
+
 `;

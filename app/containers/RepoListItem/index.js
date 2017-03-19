@@ -26,14 +26,15 @@ import PlaceholderB from './placeholderB.jpg'
 
 const Container = styled.div`
   width: 100%;
-  height: 210px;
-  margin-top: 20px;
+  margin-bottom: 20px;
   display: flex;
+  transition: all 0.25s ease;
+  cursor: pointer;
 `;
 
 const DateResultWrap = styled.div`
   width:  11%;
-  height: 100%;
+  height: 210px;
   background-color: red;
   text-align: center;
   padding-top: 30px;
@@ -61,6 +62,7 @@ const TitleH1 = styled.h1`
   font-style: normal;
   font-weight: 600;
   font-size: 1em;
+  white-space:nowrap;
 `;
 
 const ArrowHiddenIcon = styled.a`
@@ -90,6 +92,7 @@ const ResultDescriptionPCont = styled.div`
  const DateResult_h1 = styled.h1`
   color: white;
   margin: 0px;
+  font-size: 3em;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
  `;
 
@@ -138,6 +141,7 @@ const PlaceDescription = styled.p`
   font-weight: 100;
   margin-left: 15px;
   font-size: 13px;
+  white-space:nowrap;
 `;
 
 const P_Margin = styled.p`
@@ -148,15 +152,25 @@ const P_Margin = styled.p`
   margin: 0px;
 `;
 
+
 const months = [ "January", "February", "March", "April", "May", "June",
    "July", "August", "September", "October", "November", "December" ];
 
 
 export class RepoListItem extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+  constructor(props) {
+      super(props)
+      this.state = {
+        expandedTicket: false,
+      }
+      this.toggleExpandedTicket = this.toggleExpandedTicket.bind(this);
+  }
+  toggleExpandedTicket() {
+      this.setState({ expandedTicket: !this.state.expandedTicket, });
+  }
+  
   render() {
-
-
-
+    
     const item = this.props.item;
 
     var dateObj = item.dates.start.localDate;
@@ -169,15 +183,6 @@ export class RepoListItem extends React.PureComponent { // eslint-disable-line r
     var minPrice = parseInt(item.priceRanges[0].min);
     var maxPrice = parseInt(item.priceRanges[0].max);
 
-    // If the repository is owned by a different person than we got the data for
-    // it's a fork and we should show the name of the owner
-    // if (item.owner.login !== this.props.currentUser) {
-    //   nameprefix = `${item.name}/`;
-    // }
-    // if (item.images[0].ratio === '16_9') {
-    //     return item.images[0].url;
-    //     console.log(item.images[0].url);
-    // }
     
   
     for(var i = 0; i < item.images.length; i++){
@@ -186,12 +191,18 @@ export class RepoListItem extends React.PureComponent { // eslint-disable-line r
         var artistcover = item.images[i].url;
         }
     }
+
+    
  
     // Put together the content of the repository
     const content = (
 
 
-      <Container>
+      <Container
+         className={this.state.expandedTicket ? 'expanded-ticket' : 'normal-ticket'}
+          onClick={this.toggleExpandedTicket}
+      >
+
         <DateResultWrap>
               <DateResult_h1 >
                 {date}
@@ -202,7 +213,6 @@ export class RepoListItem extends React.PureComponent { // eslint-disable-line r
               <Span />
               </SpanDiv>
               <DateResult_p2>{item._embedded.venues[0].name}</DateResult_p2>
-
         </DateResultWrap>
             <ResultImgWrap>
               <Img src={artistcover} alt="artist_cover" />
@@ -228,33 +238,9 @@ export class RepoListItem extends React.PureComponent { // eslint-disable-line r
                   </ResultDescription_P>
                 </ResultDescriptionPCont>
             </ResultDescriptionWrap>
-                 {/*<Wrapper>
-        <RepoLink href={item._embedded.venues[0].url} target="_blank">
-          {nameprefix + item._embedded.venues[0].name}
-        </RepoLink>
-        <IssueLink href={`${item.html_url}/issues`} target="_blank">
-          <IssueIcon />
-          <FormattedNumber value={item.open_issues_count} />
-        </IssueLink>
-      </Wrapper>*/}
+
         </Container>
 
-
-
-
-
-
-
-
-      /*<Wrapper>
-        <RepoLink href={item._embedded.venues[0].url} target="_blank">
-          {nameprefix + item._embedded.venues[0].name}
-        </RepoLink>
-        <IssueLink href={`${item.html_url}/issues`} target="_blank">
-          <IssueIcon />
-          <FormattedNumber value={item.open_issues_count} />
-        </IssueLink>
-      </Wrapper>*/
     );
 
     // Render the content into a list item

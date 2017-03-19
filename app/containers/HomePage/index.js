@@ -23,6 +23,8 @@ import { loadRepos } from '../App/actions';
 import { changeUsername } from './actions';
 import { makeSelectUsername } from './selectors';
 
+import ActionBar from 'components/MainActionContainer/homepage';
+
 
 
 import styled from 'styled-components';
@@ -120,6 +122,8 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
                   <Icon_eyeglass className="material-icons">search</Icon_eyeglass>
              </InputIcon>
         </SearchWrapper>
+        <ActionBar />
+        {/*ActionBar should be render in App main */}
         <ReposList {...reposListProps} />
       </div>
     );

@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
+  position: absolute;
+  top: 43px;
+  left: 25%;
   height: 100%;
-  width: 165px;
+  width: 145px;
   margin-left: 8%;
 `;
 
@@ -24,7 +27,7 @@ const Logo_h1 = styled.h1`
   font-style: normal;
   font-weight: 600;
   margin-bottom: -10px;
-  font-size: 1.2em;
+  font-size: 1em;
 `;
 
 const Span_text = styled.span`
@@ -37,7 +40,7 @@ const Logo_h2 = styled.h2`
   font-style: normal;
   font-weight: 600;
   margin-bottom: -10px;
-  font-size: 4.2em;
+  font-size: 4em;
   margin-top: 0px;
 `;
 
@@ -45,6 +48,7 @@ const Select_option = styled.p`
   font-family: tablet-gothic, sans-serif;
   font-style: normal;
   font-weight: 600;
+  font-size: .9em;
   color: red;
   margin: 0px;
   float: left;
@@ -54,13 +58,14 @@ const Select_option_2 = styled.p`
   font-family: tablet-gothic, sans-serif;
   font-style: normal;
   font-weight: 600;
+  font-size: .9em;
   color: black;
   margin: 0px;
   margin-left: 12%;
   float: right;
 `
 
-class CalendarWidget extends Component {
+class FeatureWidget extends Component {
   render() {
     return (
         <Container>
@@ -86,4 +91,4 @@ class CalendarWidget extends Component {
   }
 }
 
-export default CalendarWidget;
+export default FeatureWidget;

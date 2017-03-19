@@ -2,20 +2,29 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  height: 100%;
-  width: 125px;
+  position: absolute;
+  width:  125px;
+  height: 102px;
+  top: 45px;
   border-radius: 8px;
   border: solid 2px rgb(254,0,0);
   text-align: center;
-  padding-top: 7px;
+  left: 19%;
+`;
+
+const MonthWrap = styled.div`
+  height: 30px;
+  width: 100%;
+  border-bottom: solid 2px rgb(254,0,0);
+
 `;
 
 const Logo_h1 = styled.h1`
   font-family: tablet-gothic, sans-serif;
   font-style: normal;
   font-weight: 600;
+  font-size: 1em;
   margin-bottom: -10px;
-  font-size: 1.2em;
 `;
 
 const Span_text = styled.span`
@@ -27,20 +36,29 @@ const Logo_h2 = styled.h2`
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: 600;
+  font-size: 2em;
   margin-bottom: -10px;
-  font-size: 3.2em;
   margin-top: 0px;
 `;
 
+const months = [ "January", "February", "March", "April", "May", "June",
+   "July", "August", "September", "October", "November", "December" ];
+
 class CalendarWidget extends Component {
   render() {
+    var currentDate = new Date();
+    var month =  months[currentDate.getMonth()];
+    var date = currentDate.getDate();
+
     return (
         <Container>
+          <MonthWrap>
             <Logo_h1>
-              <Span_text> August </Span_text>
+              {month} 
             </Logo_h1>
+          </MonthWrap>
             <Logo_h2>
-              22
+              {date}
             </Logo_h2>
         </Container>
         );

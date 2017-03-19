@@ -21,6 +21,11 @@ import MainActionContainer from 'components/MainActionContainer';
 import withProgressBar from 'components/ProgressBar';
 import Logo from 'components/Logo/Logo';
 
+import FeatureWidget from 'components/FeaturesNav/FeaturesNav';
+import CalendarWidget from 'components/Calendar/Calendar';
+import LanguageOption from 'components/Language/LanguageOption';
+
+
 const AppWrapper = styled.div`
   max-width: 100%;
   margin: 0 auto;
@@ -40,6 +45,9 @@ export function App(props) {
         ]}
       />
       <Logo />
+      <FeatureWidget />
+      <CalendarWidget />
+      <LanguageOption />
       {/*<Header />*/}
       <LeftContainer />
       {React.Children.toArray(props.children)}
