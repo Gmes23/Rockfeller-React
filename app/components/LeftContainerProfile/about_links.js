@@ -13,13 +13,16 @@ const Container = styled.div`
 
 const Alink = styled.a`
   vertical-align: text-bottom;
+  &:hover{
+    color: rgb(254,0,0);
+  }
 `;
 
 const Span = styled.span`
   position: absolute;
   border-bottom: solid 2px #fe0000;
   width: 15px;
-  left: 3.8%;
+  left: 18.8%;
   vertical-align: text-bottom;
 `;
 

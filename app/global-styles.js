@@ -40,4 +40,9 @@ injectGlobal`
     height: 210px;
   }
 
+  a, a:hover, a:active, a:visited {
+    text-decoration: none !important;
+    cursor: pointer;
+    color: inherit;
+  }
 `;

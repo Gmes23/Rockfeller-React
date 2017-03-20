@@ -2,18 +2,18 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  position: absolute;
-  width:  125px;
-  height: 102px;
-  top: 45px;
-  border-radius: 8px;
-  border: solid 2px rgb(254,0,0);
-  text-align: center;
-  left: 19%;
+    position: absolute;
+    width: 95px;
+    height: 92px;
+    top: 45px;
+    border-radius: 8px;
+    border: solid 2px rgb(254,0,0);
+    text-align: center;
+        left: 24.4%;
 `;
 
 const MonthWrap = styled.div`
-  height: 30px;
+  height: 26px;
   width: 100%;
   border-bottom: solid 2px rgb(254,0,0);
 
@@ -36,7 +36,7 @@ const Logo_h2 = styled.h2`
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: 600;
-  font-size: 2em;
+  font-size: 2.6em;
   margin-bottom: -10px;
   margin-top: 0px;
 `;

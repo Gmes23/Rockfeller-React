@@ -92,7 +92,7 @@ const ResultDescriptionPCont = styled.div`
  const DateResult_h1 = styled.h1`
   color: white;
   margin: 0px;
-  font-size: 3em;
+  font-size: 3.3em;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
  `;
 
@@ -101,7 +101,7 @@ const ResultDescriptionPCont = styled.div`
   color: white;
   font-weight: 600;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 1.1em;
+  font-size: .8em;
  `;
 
   const DateResult_p2 = styled.p`
@@ -152,12 +152,54 @@ const P_Margin = styled.p`
   margin: 0px;
 `;
 
+const PleaseNote = styled.div`
+  font-family: proxima-nova, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: .8em;
+  margin-top: 10px;
+  line-height: 1.4em;
+  text-transform: lowercase;
+`;
+
+const SpanRed = styled.span`
+  color: rgb(254,0,0);
+`;
+
+const BuyDiv = styled.div`
+  font-family: proxima-nova, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: .8em;
+  margin-top: 10px;
+  line-height: 1.4em;
+  display: flex;
+`;
+
+const BuyButton = styled.button`
+  background-color: transparent;
+  border: 2px solid red;
+  border-radius: 7px;
+  width: 70px;
+  margin-left: 15%;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: center;
+  color: black;
+  text-decoration: none;
+  // padding-top: 3.3333%;
+`;
+
+const DoorsPrice = styled.div`
+  border-bottom: 2px solid red;
+`;
 
 const months = [ "January", "February", "March", "April", "May", "June",
    "July", "August", "September", "October", "November", "December" ];
 
 
 export class RepoListItem extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+  //Hides some of the ticket data, expands when clicked on
   constructor(props) {
       super(props)
       this.state = {
@@ -170,21 +212,21 @@ export class RepoListItem extends React.PureComponent { // eslint-disable-line r
   }
   
   render() {
-    
+    // json from ticketmaster api
     const item = this.props.item;
 
+    // converting date json
     var dateObj = item.dates.start.localDate;
     var date = dateObj.split('-')[2];
     var year = dateObj.split('-')[0];
     var month = months[parseInt(dateObj.split('-')[1]) - 1];
 
-    let nameprefix = '';
-
+    // converting currency json 
     var minPrice = parseInt(item.priceRanges[0].min);
     var maxPrice = parseInt(item.priceRanges[0].max);
 
     
-  
+    // search threw json array and use the high def picture as the img url src
     for(var i = 0; i < item.images.length; i++){
         if(item.images[i].ratio == "16_9" && item.images[i].width == 1024)
         {
@@ -194,7 +236,7 @@ export class RepoListItem extends React.PureComponent { // eslint-disable-line r
 
     
  
-    // Put together the content of the repository
+    // Put together the content of the search
     const content = (
 
 
@@ -225,17 +267,23 @@ export class RepoListItem extends React.PureComponent { // eslint-disable-line r
                 </DescriptionTitle>
                 <ResultDescriptionPCont> 
                   <ResultDescription_P>
-                     {item._embedded.attractions[0].name} will be performing at {item._embedded.venues[0].name} for her {item.promoter.name}
-                     <br />
-                     Event starts: {item.dates.start.localTime}, timezone: {item.dates.timezone}
-                     <br />
-                     Please Note: {item.pleaseNote}
-                     <br />
-                     Tickets on sale now for : ${minPrice} - ${maxPrice}
-                    
-                     
-                     
+                     {item._embedded.attractions[0].name} will be performing at {item._embedded.venues[0].name} for the {item.promoter.name} event
                   </ResultDescription_P>
+                  <PleaseNote>
+                     <SpanRed> Please Note: </SpanRed>{item.pleaseNote}
+                  </PleaseNote>
+                  <BuyDiv>
+                    <DoorsPrice>
+                      Ticket:  ${minPrice} - ${maxPrice}
+                      <br />
+                      Doors: {item.dates.start.localTime}
+                    </DoorsPrice>
+
+                    <BuyButton>
+                     <a href={item.url}> BUY </a>
+                   </BuyButton>
+ 
+                  </BuyDiv>
                 </ResultDescriptionPCont>
             </ResultDescriptionWrap>
 

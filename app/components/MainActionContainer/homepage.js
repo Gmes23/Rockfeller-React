@@ -9,7 +9,7 @@ const Container = styled.div`
 
 const CurrentActions = styled.div`
   width: 100%;
-  padding-left: 33%;
+  padding-left: 38%;
   display: flex;
 `;
 
@@ -66,10 +66,6 @@ class ActionBar extends Component {
                    <DisplayAsVArray className="material-icons">view_stream</DisplayAsVArray>
               </DisplayResultSettingContainer>    
            </CurrentActions>
-           {/*<HomePageResult />
-           <HomePageResult />
-           <HomePageResult />*/}
-
         </Container>
         );
   }

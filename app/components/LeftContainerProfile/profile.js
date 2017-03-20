@@ -43,7 +43,7 @@ const Span = styled.span`
   position: absolute;
   border-bottom: solid 2px #fe0000;
   width: 15px;
-  left: 3.8%;
+  left: 18.8%;
 `;
 
 const Profile_icon = styled.div`
@@ -52,17 +52,23 @@ const Profile_icon = styled.div`
   vertical-align: text-bottom;
 `;
 
-const My_profile = styled.p`
+const My_profile = styled.a`
   font-family: museo-sans, sans-serif;
   font-style: normal;
   font-weight: 100;
   margin: 0px;
   font-size: 13px;
   color: rgb(191,191,191);
+  &:hover {
+    color: rgb(254,0,0);
+  }
 `;
 
 const Alink= styled.a`
   vertical-align: text-bottom;
+  &:hover {
+    color: red;
+  }
 `;
 
 class ProfileContainer extends Component {
@@ -80,6 +86,7 @@ class ProfileContainer extends Component {
             </Username_container>
             <Profile_icon>
                 <Alink  className="material-icons">person</Alink >
+                <br />
                 <My_profile> My Profile </My_profile>
             </Profile_icon>
         </Container>

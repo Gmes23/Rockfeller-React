@@ -4,9 +4,9 @@ import styled from 'styled-components';
 const Container = styled.div`
   position: absolute;
   top: 43px;
-  left: 25%;
+  left: 30.3%;
   height: 100%;
-  width: 145px;
+  width: 125px;
   margin-left: 8%;
 `;
 
@@ -27,7 +27,7 @@ const Logo_h1 = styled.h1`
   font-style: normal;
   font-weight: 600;
   margin-bottom: -10px;
-  font-size: 1em;
+  font-size: .95em;
 `;
 
 const Span_text = styled.span`

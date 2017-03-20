@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const Container = styled.div`
   position: absolute;
   top: 40px;
-  left: 45%;
+  left: 47.5%;
   height: 100%;
   width: 130px;
   padding-top: 64.8px;
@@ -40,7 +40,7 @@ const Select_option = styled.p`
   color: red;
   margin: 0px;
   float: left;
-  font-size: .65em;
+  font-size: .55em;
 `
 
 const Select_option_2 = styled.p`
@@ -50,7 +50,7 @@ const Select_option_2 = styled.p`
   color: black;
   margin: 0px;
   float: right;
-  font-size: .65em;
+  font-size: .55em;
 `
 
 class LanguageOption extends Component {

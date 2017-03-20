@@ -81,7 +81,17 @@ const Icon_eyeglass = styled.a`
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   /**
    * when initial state artist is not null, submit the form to load repos
+   * 
    */
+
+  constructor() {
+    super();
+    
+    this.state = {
+      username: 'music',
+    }
+  }
+
   componentDidMount() {
     if (this.props.username && this.props.username.trim().length > 0) {
       this.props.onSubmitForm();

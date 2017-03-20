@@ -28,7 +28,7 @@ function homeReducer(state = initialState, action) {
       return state
         .set('username', action.name.replace(/@/gi, ''));
     default:
-      return state;
+      return state
   }
 }
 
