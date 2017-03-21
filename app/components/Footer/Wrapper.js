@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.footer`
+  bottom: 0px;
   display: flex;
   justify-content: space-between;
   padding: 3em 0;

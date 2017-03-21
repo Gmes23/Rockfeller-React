@@ -29,6 +29,7 @@ function homeReducer(state = initialState, action) {
         .set('username', action.name.replace(/@/gi, ''));
     default:
       return state
+        .set('username', 'music')
   }
 }
 

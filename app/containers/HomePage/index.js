@@ -83,21 +83,12 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
    * when initial state artist is not null, submit the form to load repos
    * 
    */
-
-  constructor() {
-    super();
-    
-    this.state = {
-      username: 'music',
-    }
-  }
-
   componentDidMount() {
     if (this.props.username && this.props.username.trim().length > 0) {
       this.props.onSubmitForm();
     }
   }
-
+ 
   render() {
     const { loading, error, repos } = this.props;
     const reposListProps = {
@@ -122,7 +113,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
                   id="username"
                   type="text"
                   placeholder="Search"
-                  value={this.props.username}
+                  value={this.props.username} 
                   onChange={this.props.onChangeUsername} 
                   autoComplete="off"
                 />
