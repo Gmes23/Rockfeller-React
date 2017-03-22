@@ -17,7 +17,7 @@ import {
 
 // The initial state of the App
 const initialState = fromJS({
-  username: '',
+  username: 'music',
 });
 
 function homeReducer(state = initialState, action) {
@@ -26,10 +26,9 @@ function homeReducer(state = initialState, action) {
 
       // Delete prefixed '@' from the github username
       return state
-        .set('username', action.name.replace(/@/gi, ''));
+        .set('username', action.name.replace(/@/gi, ''))
     default:
-      return state
-        .set('username', 'music')
+        return state
   }
 }
 

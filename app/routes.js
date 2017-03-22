@@ -41,25 +41,20 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     },{
-       path: '/sign-in',
+      path: '/sign-in',
       name: 'sign-in',
       getComponent(nextState, cb) {
-        const importModules = Promise.all([
-          // import('containers/HomePage/reducer'),
-          // import('containers/HomePage/sagas'),
-          import('containers/SignIn'),
-          // import('containers/Search/sagas'),
-          // import('containers/Search'),
-        ]);
-
-        const renderRoute = loadModule(cb);
-
-        importModules.then(([component]) => {
-
-          renderRoute(component);
-        });
-
-        importModules.catch(errorLoading);
+        import('containers/SignIn')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    },{
+      path: '/sign-up',
+      name: 'sign-up',
+      getComponent(nextState, cb) {
+        import('containers/SignUp')
+          .then(loadModule(cb))
+          .catch(errorLoading);
       },
     },{
       path: '/features',
