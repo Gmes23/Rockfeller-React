@@ -73,6 +73,7 @@ export function registerRequest (data) {
  */
 export function requestError (error) {
   return {type: REQUEST_ERROR, error}
+  console.log(error)
 }
 
 /**
