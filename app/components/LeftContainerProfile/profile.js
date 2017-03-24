@@ -80,7 +80,7 @@ class ProfileContainer extends Component {
             </Userimg>
             <Username_container>
                 <Welcome>Welcome,</Welcome>
-                {/*max charcters allowed*/}
+                {/*max characters allowed*/}
                 <User_name> John Trevskye </User_name>
                 <Span />
             </Username_container>

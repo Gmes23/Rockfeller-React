@@ -1,5 +1,64 @@
-// Log in/signup Page
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Log in/signup Page
+/*
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
@@ -81,7 +140,7 @@ class SignupForm extends React.Component {
                   name="userscreenname"
                  />
 
-                    <TextFieldGroup
+                  <TextFieldGroup
                   type="text"
                   placeholder="email"
                   value={this.state.passwordConfirmation}
@@ -121,4 +180,4 @@ export function* loadUserData(uid) {
 }
 
 
-export default SignupForm;
+export default SignupForm;*/

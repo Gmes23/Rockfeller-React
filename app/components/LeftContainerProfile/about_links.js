@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router';
 
 import Img from './Img';
 import Profile from './profile.png'
@@ -11,7 +12,7 @@ const Container = styled.div`
   margin-top: 40px;
 `;
 
-const Alink = styled.a`
+const Alink = styled(Link)`
   vertical-align: text-bottom;
   &:hover{
     color: rgb(254,0,0);
@@ -41,22 +42,22 @@ class LinksContainer extends Component {
         <Container>
           < Ul_links>
             <li>
-              <Alink> Program </Alink>
+              <Alink to="/"> Program </Alink>
             </li>
             <li>
-              <Alink> Info </Alink>
+              <Alink to="/info"> Info </Alink>
               <Span />
             </li>
             <li>
-              <Alink> Booking </Alink>
+              <Alink to="/booking"> Booking </Alink>
               <Span />
             </li>
             <li>
-              <Alink> FAQ </Alink>
+              <Alink to="/updates"> FAQ </Alink>
               <Span />
             </li>
             <li>
-              <Alink> Contact </Alink>
+              <Alink to="/contact"> Contact </Alink>
               <Span />
             </li>
             <li>

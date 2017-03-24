@@ -10,6 +10,21 @@ const ngrok = (isDev && process.env.ENABLE_TUNNEL) || argv.tunnel ? require('ngr
 const resolve = require('path').resolve;
 const app = express();
 
+// Connecting to Mongo database
+var mongoose = require('mongoose');
+
+mongoose.connect("mongodb://localhost/nytreact");
+var db = mongoose.connection;
+
+// show any mongoose errors
+db.on('error', function(err) {
+  console.log('Mongoose Error: ', err);
+});
+
+db.once("open", function() {
+  console.log("Mongoose connection successful.");
+});
+
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
 // app.use('/api', myApi);
 
