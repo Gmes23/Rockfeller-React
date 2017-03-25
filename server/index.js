@@ -10,19 +10,36 @@ const ngrok = (isDev && process.env.ENABLE_TUNNEL) || argv.tunnel ? require('ngr
 const resolve = require('path').resolve;
 const app = express();
 
-// Connecting to Mongo database
+// database
+var UserDB = require("./model");
+
 var mongoose = require('mongoose');
 
-mongoose.connect("mongodb://localhost/nytreact");
+mongoose.connect("mongodb://localhost/RockfellerDB");
 var db = mongoose.connection;
 
-// show any mongoose errors
 db.on('error', function(err) {
   console.log('Mongoose Error: ', err);
 });
 
 db.once("open", function() {
   console.log("Mongoose connection successful.");
+});
+
+// Route to add an article to saved list
+app.post("/api/saved", function(req, res) {
+  var newUser = new UserDB(req.body);
+
+  console.log(req.body);
+
+  newUser.save(function(err, doc) {
+    if (err) {
+      console.log(err);
+    }
+    else {
+      res.send(doc);
+    }
+  });
 });
 
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
