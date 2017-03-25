@@ -1,18 +1,103 @@
 import React from 'react';
+import styled from 'styled-components';
+
+import { connect } from 'react-redux';
+import { userSignupRequest } from './actions';
+
+
+
+const RegisterInput = styled.input`
+    border-bottom: 2px solid red;
+    margin: 20px;
+
+`;
+
+const Form = styled.form`
+    position: absolute;
+    top: 30%;
+    left: 30%;
+`;
+
+const Button = styled.button`
+    background-color: red;
+    color: white;
+    width: 100px;
+    height: 50px;
+    margin: 10px;
+`;
 
 class SignupForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            screenname: '',
+            email: '',
+            password: '',
+            passwordConfirmation: '',
+        }
+
+        this.onChange = this.onChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+        
+
+    }
+
+    onChange(e) {
+        this.setState({ [e.target.name]: e.target.value });
+    }
+
+    onSubmit(e) {
+        e.preventDefault();
+        this.props.userSignupRequest(this.state);
+    }
+
     render() {
         return (
-            <Form>
+            <Form onSubmit={this.onSubmit}>
                 <RegisterInput
-
+                type="text"
+                name="screenname"
+                placeholder="username"
+                value={this.state.screenname}
+                onChange={this.onChange}
                 />
-            </Form>
+
+                <RegisterInput
+                type="text"
+                name="email"
+                placeholder="email"
+                value={this.state.email}
+                onChange={this.onChange}
+                />
+
+                  <RegisterInput
+                type="text"
+                name="password"
+                placeholder="password"
+                value={this.state.password}
+                onChange={this.onChange}
+                />
+
+                  <RegisterInput
+                type="text"
+                name="passwordConfirmation"
+                placeholder="confirm password"
+                value={this.state.passwordConfirmation}
+                onChange={this.onChange}
+                />
+
+                <Button> Register </Button>
+            </Form> 
         )
     }
 }
 
+SignupForm.propTypes = {
+    userSignupRequest: React.PropTypes.func.isRequired
+}
 
+
+export default connect((state) => { return {} }, { userSignupRequest } )(SignupForm);
 
 
 

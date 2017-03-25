@@ -1,11 +1,7 @@
-import { SIGNUP_REQUESTING } from './constants'
+import axios from 'axios';
 
-const signupRequest = function signupRequest ({ email, password }) {  
-  return {
-    type: SIGNUP_REQUESTING,
-    email,
-    password,
+export function userSignupRequest(userData) {
+  return dispatch => {
+    return axios.post('api/usernew', userData);
   }
 }
-
-export default signupRequest

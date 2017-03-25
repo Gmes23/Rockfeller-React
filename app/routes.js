@@ -52,12 +52,29 @@ export default function createRoutes(store) {
     },{
       path: '/sign-up',
       name: 'sign-up',
-      getComponent(nextState, cb) {
-        import('containers/SignUp')
-          .then(loadModule(cb))
-          .catch(errorLoading);
+    getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/SignUp'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([component]) => {
+
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
       },
-    },{
+    },
+    
+    
+    
+    
+    
+    
+    
+    {
       path: '/features',
       name: 'features',
       getComponent(nextState, cb) {

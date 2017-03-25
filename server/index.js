@@ -26,21 +26,29 @@ db.once("open", function() {
   console.log("Mongoose connection successful.");
 });
 
-// Route to add an article to saved list
-app.post("/api/saved", function(req, res) {
-  var newUser = new UserDB(req.body);
+// database user routes
+const users = require('./middlewares/routes/users');
+const bodyParser = require('body-parser');
 
-  console.log(req.body);
+app.use('/api/users', users);
 
-  newUser.save(function(err, doc) {
-    if (err) {
-      console.log(err);
-    }
-    else {
-      res.send(doc);
-    }
-  });
-});
+app.use(bodyParser.json());
+
+// Route to add a new user to database 
+// app.post("/api/users", function(req, res) {
+//   var newUser = new UserDB(req.body);
+
+//   console.log(req.body);
+
+//   newUser.save(function(err, doc) {
+//     if (err) {
+//       console.log(err);
+//     }
+//     else {
+//       res.send(doc);
+//     }
+//   });
+// });
 
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
 // app.use('/api', myApi);
