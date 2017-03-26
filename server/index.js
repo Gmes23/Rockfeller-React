@@ -15,7 +15,7 @@ var UserDB = require("./model");
 
 var mongoose = require('mongoose');
 
-mongoose.connect("mongodb://localhost/RockfellerDB");
+mongoose.connect("mongodb://localhost:27017/RockfellerDB");
 var db = mongoose.connection;
 
 db.on('error', function(err) {
@@ -27,13 +27,14 @@ db.once("open", function() {
 });
 
 // database user routes
-const users = require('./middlewares/routes/users');
+const router = require('./middlewares/routes/users');
 const bodyParser = require('body-parser');
 
-app.use('/api/users', users);
-
 app.use(bodyParser.json());
+app.use('/api/users', router);
 
+// app.use(app.router);
+// routes.initialize(app);
 // Route to add a new user to database 
 // app.post("/api/users", function(req, res) {
 //   var newUser = new UserDB(req.body);

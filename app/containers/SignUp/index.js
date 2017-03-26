@@ -1,8 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
+
 import { userSignupRequest } from './actions';
+
+import validateInput from '../../../server/middlewares/routes/shared/validation/signupvalidation';
 
 
 
@@ -26,6 +29,12 @@ const Button = styled.button`
     margin: 10px;
 `;
 
+const AlertWrongInput = styled.div`
+    color: red;
+    position: relative;
+    margin: 1%;
+`;
+
 class SignupForm extends React.Component {
     constructor(props) {
         super(props);
@@ -34,24 +43,46 @@ class SignupForm extends React.Component {
             email: '',
             password: '',
             passwordConfirmation: '',
+            errors: {},
+            isLoading: false
         }
 
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         
-
     }
 
     onChange(e) {
         this.setState({ [e.target.name]: e.target.value });
     }
 
+    isValid() {
+        const { errors, isValid } = validateInput(this.state);
+
+        if (!isValid){
+            this.setState({ errors });
+        }
+        
+        return isValid;
+    }
+
     onSubmit(e) {
         e.preventDefault();
-        this.props.userSignupRequest(this.state);
+
+        if(this.isValid()){
+        this.setState({ errors: {}, isLoading: true });
+        this.props.userSignupRequest(this.state).then(
+          () => {
+              browserHistory.push('/');
+          },
+          (errors) => this.setState({ errors: errors.response.data, isLoading: false })
+        );
+        }
     }
 
     render() {
+        const { errors } = this.state;
+
         return (
             <Form onSubmit={this.onSubmit}>
                 <RegisterInput
@@ -61,32 +92,36 @@ class SignupForm extends React.Component {
                 value={this.state.screenname}
                 onChange={this.onChange}
                 />
+                 {errors.screenname && <AlertWrongInput> { errors.screenname } </AlertWrongInput>}
 
                 <RegisterInput
-                type="text"
+                type="eamil"
                 name="email"
                 placeholder="email"
                 value={this.state.email}
                 onChange={this.onChange}
                 />
+                 {errors.email && <AlertWrongInput> { errors.email } </AlertWrongInput>}
 
                   <RegisterInput
-                type="text"
+                type="password"
                 name="password"
                 placeholder="password"
                 value={this.state.password}
                 onChange={this.onChange}
                 />
+                 {errors.password && <AlertWrongInput> { errors.password } </AlertWrongInput>}
 
                   <RegisterInput
-                type="text"
+                type="password"
                 name="passwordConfirmation"
                 placeholder="confirm password"
                 value={this.state.passwordConfirmation}
                 onChange={this.onChange}
                 />
+                  {errors.passwordConfirmation && <AlertWrongInput> { errors.passwordConfirmation } </AlertWrongInput>}
 
-                <Button> Register </Button>
+                <Button disabled={this.state.isLoading}> Register </Button>
             </Form> 
         )
     }
