@@ -36,4 +36,3 @@ function validateInput(data) {
 }
 
 module.exports = validateInput;
-// return validateInput;
