@@ -14,5 +14,5 @@ var UserSchema = new Schema({
     email: { type: String, required: true }
 });
 
-var UserDB= mongoose.model("UserDB", UserSchema);
+var UserDB = mongoose.model("UserDB", UserSchema);
 module.exports = UserDB

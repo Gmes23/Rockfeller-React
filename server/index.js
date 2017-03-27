@@ -33,23 +33,6 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use('/api/users', router);
 
-// app.use(app.router);
-// routes.initialize(app);
-// Route to add a new user to database 
-// app.post("/api/users", function(req, res) {
-//   var newUser = new UserDB(req.body);
-
-//   console.log(req.body);
-
-//   newUser.save(function(err, doc) {
-//     if (err) {
-//       console.log(err);
-//     }
-//     else {
-//       res.send(doc);
-//     }
-//   });
-// });
 
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
 // app.use('/api', myApi);
