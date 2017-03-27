@@ -11,22 +11,22 @@ const resolve = require('path').resolve;
 const app = express();
 
 // database
-var UserDB = require("./model");
+// var UserDB = require("./model");
 
-var mongoose = require('mongoose');
+// var mongoose = require('mongoose');
 
-mongoose.connect("mongodb://localhost:27017/RockfellerDB");
-var db = mongoose.connection;
+// mongoose.connect("mongodb://localhost:27017/RockfellerDB");
+// var db = mongoose.connection;
 
-db.on('error', function(err) {
-  console.log('Mongoose Error: ', err);
-});
+// db.on('error', function(err) {
+//   console.log('Mongoose Error: ', err);
+// });
 
-db.once("open", function() {
-  console.log("Mongoose connection successful.");
-});
+// db.once("open", function() {
+//   console.log("Mongoose connection successful.");
+// });
 
-// database user routes
+// // database user routes
 const router = require('./middlewares/routes/users');
 const bodyParser = require('body-parser');
 
