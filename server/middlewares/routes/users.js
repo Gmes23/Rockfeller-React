@@ -1,10 +1,12 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const UserDB = require('../../model');
-const validateInput = require('./shared/validation/signupvalidation');
+const commonValidations = require('./shared/validation/signupvalidation');
 
 
 let router = express.Router();
+
+function validateInput(data)
 
 
 router.post('/', (req, res) => {
@@ -34,7 +36,7 @@ router.post('/', (req, res) => {
     } else {
         res.status(400).json(errors);
     }
-
+ 
 });
 
 
