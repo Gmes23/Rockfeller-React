@@ -42,6 +42,11 @@ import { translationMessages } from './i18n';
 // Import CSS reset and Global Styles
 import './global-styles';
 
+// we set the authorization token here so its available on the first login
+import setAuthorizationToken from './utils/setAuthorizationToken';
+
+setAuthorizationToken(localStorage.jwtToken);
+
 // Import routes
 import createRoutes from './routes';
 

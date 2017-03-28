@@ -3,7 +3,7 @@
 // See http://blog.mxstbr.com/2016/01/react-apps-with-pages for more information
 // about the code splitting business
 import { getAsyncInjectors } from './utils/asyncInjectors';
-import { requireAuth } from 'containers/Viewer/lib';
+// import { requireAuth } from 'containers/Viewer/lib';
 
 const errorLoading = (err) => {
   console.error('Dynamic page loading failed', err); // eslint-disable-line no-console
@@ -108,7 +108,7 @@ export default function createRoutes(store) {
 
 
       // for example's sake, require authentication to see /features
-        onEnter: requireAuth,
+        // onEnter: requireAuth,
      },
      
     //  {
