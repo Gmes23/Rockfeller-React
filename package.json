@@ -225,6 +225,7 @@
     "intl": "1.2.5",
     "invariant": "2.2.2",
     "ip": "1.1.4",
+    "jsonwebtoken": "^7.3.0",
     "knex": "^0.12.9",
     "lodash": "4.17.2",
     "material-icons": "^0.1.0",

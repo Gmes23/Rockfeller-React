@@ -1,25 +1,146 @@
-// Log in/signup Page
-
-import React from 'react';
-import { FormattedMessage } from 'react-intl';
+/*import React from 'react';
 import styled from 'styled-components';
-
+import { login } from './actions';
 import { connect } from 'react-redux';
 
+import { browserHistory } from 'react-router';
+
+import validateInput from '../../../server/middlewares/routes/shared/validation/loginvalidation';
 
 const Form = styled.form`
     position: absolute;
-    top: 37%;
-    left: 38%;
-    height: 400px;
-    width: 470px;
+    left: 40%;
+    top: 20%;
     background-color: red;
+    width: 400px;
+    height: 500px;
 `;
 
+const Input = styled.input`
+    border-bottom: 2px solid red;
+    background-color: transparent;
+`;
+
+const Button = styled.button`
+    background-color: red;
+    width: 100px;
+    height: 50px;
+`;
+
+class LoginForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            identifier: '',
+            password: '',
+            errors: {},
+            isLoading: false
+        };
+
+        this.onSubmit = this.onSubmit.bind(this);
+        this.onChange = this.onChange.bind(this);
+    }
+
+    isValid() {
+        const { errors, isValid } = validateInput(this.state);
+
+        if (!isValid) {
+            this.setState({ errors });
+        }
+
+        return isValid;
+    }
+
+    onSumit(e) {
+        e.preventDefault();
+        if (this.isValid()) {
+            this.setState({ errors: {}, isLoading: true });
+            this.props.login(this.state).then(
+                (res) => this.context.router.push('/'),
+                (err) => this.setState({ errors: err.data.errors, isLoading: false })
+            );
+        }
+    }
+
+    onChange(e) {
+        this.setState({ [e.target.name]: e.target.value });
+    }
+
+    render() {
+        const { errors, identifier, password, isLoading } = this.state;
+
+        return (
+            <div>
+            <Form onSubmit={this.onSubmit}>
+                <h1> Login </h1>
+
+                <Input
+                  field="identifier"
+                  label="Username / Email"
+                  value={identifier}
+                  error={errors.indentifier}
+                  onChange={this.onChange}
+                />
+
+                 <Input
+                  field="password"
+                  label="Password"
+                  value={password}
+                  error={errors.password}
+                  onChange={this.onChange}
+                  type="password"
+                />
+
+                <Button disabled={isLoading}> LOGIN </Button>
+
+            </Form>
+           </div>
+        )
+    }
+}
+
+LoginForm.propTypes = {
+    login: React.PropTypes.func.isRequired
+}
+
+LoginForm.contextTypes = {
+    router: React.PropTypes.object.isRequired
+}
+
+export default connect(null, { login })(LoginForm);*/
 
 
-export default class LoginForm extends React.Component {
-constructor(props) {
+import React from 'react';
+import TextFieldGroup from 'components/common/TextFieldGroup';
+import validateInput from '../../../server/middlewares/routes/shared/validation/loginvalidation';
+import { connect } from 'react-redux';
+import { login } from './actions';
+
+import styled from 'styled-components';
+
+const Form = styled.form`
+    position: absolute;
+    left: 40%;
+    top: 30%;
+`;
+
+const Button = styled.button`
+    background-color: red;
+    color: white;
+    width: 100px;
+    height: 50px;'
+    cursor: pointer;
+`;
+
+const AlertErrorDiv = styled.div`
+    position: relative;
+    border: 1px solid black;
+    margin: 2%;
+    color: red;
+`;
+
+class LoginForm extends React.Component {
+  constructor(props) {
     super(props);
     this.state = {
       identifier: '',
@@ -64,16 +185,18 @@ constructor(props) {
       <Form onSubmit={this.onSubmit}>
         <h1>Login</h1>
 
-        { errors.form && <div className="alert alert-danger">{errors.form}</div> }
+        { errors.form && <AlertErrorDiv>{errors.form}</AlertErrorDiv> }
 
-        <input
+        <TextFieldGroup
+          field="identifier"
           label="Username / Email"
           value={identifier}
           error={errors.identifier}
           onChange={this.onChange}
         />
 
-        <input
+        <TextFieldGroup
+          field="password"
           label="Password"
           value={password}
           error={errors.password}
@@ -81,18 +204,18 @@ constructor(props) {
           type="password"
         />
 
-        <div className="form-group"><button className="btn btn-primary btn-lg" disabled={isLoading}>Login</button></div>
+        <Button disabled={isLoading}>Login</Button>
       </Form>
     );
   }
 }
 
-// LoginForm.propTypes = {
-//   login: React.PropTypes.func.isRequired
-// }
+LoginForm.propTypes = {
+  login: React.PropTypes.func.isRequired
+}
 
-// LoginForm.contextTypes = {
-//   router: React.PropTypes.object.isRequired
-// }
+LoginForm.contextTypes = {
+  router: React.PropTypes.object.isRequired
+}
 
-// export default connect(null, { login })(LoginForm);
+export default connect(null, { login })(LoginForm);

@@ -41,15 +41,30 @@ export default function createRoutes(store) {
 
         importModules.catch(errorLoading);
       },
-    },{
-      path: '/sign-in',
-      name: 'sign-in',
-      getComponent(nextState, cb) {
-        import('containers/SignIn')
-          .then(loadModule(cb))
-          .catch(errorLoading);
+    },
+    
+    
+   {
+      path: '/login',
+      name: 'login',
+    getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/SignIn'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([component]) => {
+
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
       },
-    },{
+    },
+    
+    
+    {
       path: '/sign-up',
       name: 'sign-up',
     getComponent(nextState, cb) {
@@ -96,15 +111,15 @@ export default function createRoutes(store) {
         onEnter: requireAuth,
      },
      
-     {
-       path: '/login',
-       name: 'login',
-      getComponent(nextState, cb) {
-         System.import('containers/Login')
-           .then(loadModule(cb))
-           .catch(errorLoading);
-       },
-     },
+    //  {
+    //    path: '/login',
+    //    name: 'login',
+    //   getComponent(nextState, cb) {
+    //      System.import('containers/Login')
+    //        .then(loadModule(cb))
+    //        .catch(errorLoading);
+    //    },
+    //  },
      
      
      

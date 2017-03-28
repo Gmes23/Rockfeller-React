@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 
-import { userSignupRequest } from './actions';
+import { userSignupRequest, isUserExists } from './actions';
 
 import validateInput from '../../../server/middlewares/routes/shared/validation/signupvalidation';
 
@@ -49,6 +49,7 @@ class SignupForm extends React.Component {
 
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+        this.checkUserExists = this.checkUserExists.bind(this);
         
     }
 
@@ -66,6 +67,25 @@ class SignupForm extends React.Component {
         return isValid;
     }
 
+    checkUserExists(e) {
+        const field = e.target.name;
+        const val = e.target.value;
+        if(val !== '') {
+            this.props.isUserExists(val).then(res => {
+                let errors = this.state.errors;
+                let invalid;
+                if (res.data.user) {
+                    errors[field] = 'There is a user with such ' + field;
+                    invalid = true;
+                } else {
+                    errors[field] = '';
+                    invalid = false;
+                }
+                this.setState({ errors, invalid })
+            });
+        }
+    }
+
     onSubmit(e) {
         e.preventDefault();
 
@@ -80,6 +100,7 @@ class SignupForm extends React.Component {
         }
     }
 
+
     render() {
         const { errors } = this.state;
 
@@ -91,6 +112,7 @@ class SignupForm extends React.Component {
                 placeholder="username"
                 value={this.state.screenname}
                 onChange={this.onChange}
+                onBlur={this.checkUserExists}
                 />
                  {errors.screenname && <AlertWrongInput> { errors.screenname } </AlertWrongInput>}
 
@@ -121,14 +143,15 @@ class SignupForm extends React.Component {
                 />
                   {errors.passwordConfirmation && <AlertWrongInput> { errors.passwordConfirmation } </AlertWrongInput>}
 
-                <Button disabled={this.state.isLoading}> Register </Button>
+                <Button disabled={this.state.isLoading || this.state.invalid }> Register </Button>
             </Form> 
         )
     }
 }
 
 SignupForm.propTypes = {
-    userSignupRequest: React.PropTypes.func.isRequired
+    userSignupRequest: React.PropTypes.func.isRequired,
+    isUserExists: React.PropTypes.func.isRequired
 }
 
 

@@ -28,10 +28,12 @@ const app = express();
 
 // // database user routes
 const router = require('./middlewares/routes/users');
+const auth = require('./middlewares/routes/auth')
 const bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
 app.use('/api/users', router);
+app.use('/api/auth', auth); 
 
 
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here

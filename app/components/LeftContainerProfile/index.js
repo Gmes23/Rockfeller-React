@@ -33,7 +33,7 @@ class LeftContainer extends React.Component { // eslint-disable-line react/prefe
 
           <Wrapper>
             <div>
-              <Button to='/sign-in' >LOGIN</Button>
+              <Button to='/login' >LOGIN</Button>
               <Button to='/sign-up'  >REGISTER</Button>
             </div> 
              {/*<ProfileContainer />*/}
