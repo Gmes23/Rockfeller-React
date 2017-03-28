@@ -95,7 +95,7 @@ class SignupForm extends React.Component {
           () => {
               browserHistory.push('/');
           },
-          (errors) => this.setState({ errors: errors.response.data, isLoading: false })
+          (err) => this.setState({ errors: err.response.data, isLoading: false })
         );
         }
     }

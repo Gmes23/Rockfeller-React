@@ -42,10 +42,6 @@ import { translationMessages } from './i18n';
 // Import CSS reset and Global Styles
 import './global-styles';
 
-// we set the authorization token here so its available on the first login
-import setAuthorizationToken from './utils/setAuthorizationToken';
-
-setAuthorizationToken(localStorage.jwtToken);
 
 // Import routes
 import createRoutes from './routes';
@@ -67,6 +63,18 @@ openSansObserver.load().then(() => {
 // e.g. `const browserHistory = useRouterHistory(createBrowserHistory)();`
 const initialState = {};
 const store = configureStore(initialState, browserHistory);
+
+
+// we set the authorization token here so its available on the first login
+import setAuthorizationToken from './utils/setAuthorizationToken';
+import jwt from 'jsonwebtoken';
+import { setCurrentUser } from './containers/SignIn/authActions';
+
+if (localStorage.jwtToken) {
+  setAuthorizationToken(localStorage.jwtToken);
+  store.dispatch(setCurrentUser(jwt.decode(localStorage.jwtToken)));
+}
+
 
 // Sync history and store, as the react-router-redux reducer
 // is under the non-default key ("routing"), selectLocationState

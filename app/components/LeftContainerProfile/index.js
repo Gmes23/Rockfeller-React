@@ -1,6 +1,8 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router'
+import { connect } from 'react-redux';
+import { logout } from '../../containers/SignIn/authActions';
 import styled from 'styled-components';
 
 import Logo from '../Logo/Logo';
@@ -28,15 +30,40 @@ const Button = styled(Link)`
 `;
 
 class LeftContainer extends React.Component { // eslint-disable-line react/prefer-stateless-function
+ 
+  logout(e) {
+    e.preventDefault();
+    this.props.logout();
+  }
+
+  
+  
   render() {
+
+    const { isAuthenticated } = this.props;
+
+    const userLinks = (
+      <div>
+        <ProfileContainer />
+        <Button onClick={this.logout.bind(this)}> LOGOUT </Button>
+      </div>
+    );
+
+    const guestLinks = (
+       <div>
+            <Button to='/login'>LOGIN</Button>
+            <Button to='/sign-up'>REGISTER</Button>
+       </div> 
+    );
+
     return (
 
           <Wrapper>
-            <div>
-              <Button to='/login' >LOGIN</Button>
-              <Button to='/sign-up'  >REGISTER</Button>
-            </div> 
-             {/*<ProfileContainer />*/}
+            { isAuthenticated ? userLinks : guestLinks }
+               <div>
+            {/*<Button to='/login'>LOGIN</Button>
+            <Button to='/sign-up'>REGISTER</Button>*/}
+       </div> 
              <LinksContainer />
              <SocialLinks />
           </Wrapper>
@@ -44,4 +71,12 @@ class LeftContainer extends React.Component { // eslint-disable-line react/prefe
   }
 }
 
-export default LeftContainer;
+function mapStateToProps(state) {
+  console.log(state._root.entries[3][1].isAuthenticated);
+  return {
+    isAuthenticated: state._root.entries[3][1].isAuthenticated
+  };
+}
+
+export default connect(mapStateToProps, { logout })(LeftContainer);
+

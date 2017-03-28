@@ -48,7 +48,7 @@ export default function createReducer(asyncReducers) {
     route: routeReducer,
     global: globalReducer,
     language: languageProviderReducer,
+    auth,
     ...asyncReducers,
-    auth
   });
 }
