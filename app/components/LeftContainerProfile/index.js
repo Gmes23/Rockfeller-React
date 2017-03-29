@@ -17,16 +17,26 @@ const Wrapper = styled.div`
   width: 20%;
   padding-left: 4%;
   padding-right: 4%;
-  // height:  100vh;
-
 `;
 
 const Button = styled(Link)`
   width: 100px;
-  height: 50px;
-  background-color: red;
+  height: 30px;
+  margin-bottom: 10%;
+  float: left;
+  display: block;
   color: white;
-  margin: 5px;
+  font-weight: 600;
+  border: 2px solid red;
+  text-align: center;
+`;
+
+const LogOutButton = styled.button`
+  color: black;
+  cursor: pointer;
+   &:hover {
+    color: red;
+  }
 `;
 
 class LeftContainer extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -45,7 +55,7 @@ class LeftContainer extends React.Component { // eslint-disable-line react/prefe
     const userLinks = (
       <div>
         <ProfileContainer />
-        <Button onClick={this.logout.bind(this)}> LOGOUT </Button>
+        <LogOutButton onClick={this.logout.bind(this)}> LOGOUT </LogOutButton>
       </div>
     );
 
@@ -57,15 +67,10 @@ class LeftContainer extends React.Component { // eslint-disable-line react/prefe
     );
 
     return (
-
           <Wrapper>
             { isAuthenticated ? userLinks : guestLinks }
-               <div>
-            {/*<Button to='/login'>LOGIN</Button>
-            <Button to='/sign-up'>REGISTER</Button>*/}
-       </div> 
-             <LinksContainer />
-             <SocialLinks />
+            <LinksContainer />
+            <SocialLinks />
           </Wrapper>
     );
   }
