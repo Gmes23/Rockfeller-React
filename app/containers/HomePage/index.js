@@ -39,6 +39,25 @@ const SearchWrapper = styled.div`
   padding-bottom: 60px;
   height: 200px;
   display: flex;
+  @media screen and (max-width: 360px) {
+    width: 82%;
+    position: absolute;
+    top: -21px;
+    right: 0px;
+    height: 200px;
+    padding-left: 4%;
+    padding-right: 4%;
+    padding-bottom: 60px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+  }
 `;
 
 const InputSearch = styled.input`
@@ -60,34 +79,34 @@ const InputSearch = styled.input`
   &:hover {
      background-color: #fff; 
   }
+
 `;
 
 const InputIcon = styled.div`
-   float: right;
-   height: 100%;
-   margin-left: 5%;
-   width: 11%;
-   border-bottom: 2px solid red;
-   padding-top: 40px;
+  float: right;
+  height: 100%;
+  margin-left: 5%;
+  width: 11%;
+  border-bottom: 2px solid red;
+  padding-top: 40px;
+
+  @media screen and (max-width: 360px) {
+     padding-top: 60px;
+  } 
 `;
 
 const Icon_eyeglass = styled.a`
   font-size: 3.5em;
+
+  @media screen and (max-width: 360px) {
+     font-size: 2.2em;
+  }
 `;
 
 
 
 
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
-  /**
-   * when initial state artist is not null, submit the form to load repos
-   * 
-   */
-  componentDidMount() {
-    if (this.props.username && this.props.username.trim().length > 0) {
-      this.props.onSubmitForm();
-    }
-  }
  
   render() {
     const { loading, error, repos } = this.props;
@@ -105,26 +124,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
             { name: 'description', content: 'Search upcoming concerts by your favorite Artist' },
           ]}
         />
-        
-        <SearchWrapper>
-            <form onSubmit={this.props.onSubmitForm} autoComplete="off">
-              <label htmlFor="username">
-                <InputSearch
-                  id="username"
-                  type="text"
-                  placeholder="Search"
-                  value={this.props.username} 
-                  onChange={this.props.onChangeUsername} 
-                  autoComplete="off"
-                />
-              </label>
-            </form>
-             <InputIcon>
-                  <Icon_eyeglass className="material-icons">search</Icon_eyeglass>
-             </InputIcon>
-        </SearchWrapper>
         <ActionBar />
-        {/*ActionBar should be render in App main */}
         <ReposList {...reposListProps} />
       </div>
     );
@@ -146,15 +146,6 @@ HomePage.propTypes = {
   onChangeUsername: React.PropTypes.func,
 };
 
-export function mapDispatchToProps(dispatch) {
-  return {
-    onChangeUsername: (evt) => dispatch(changeUsername(evt.target.value)),
-    onSubmitForm: (evt) => {
-      if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-      dispatch(loadRepos());
-    },
-  };
-}
 
 const mapStateToProps = createStructuredSelector({
   repos: makeSelectRepos(),
@@ -164,4 +155,4 @@ const mapStateToProps = createStructuredSelector({
 });
 
 // Wrap the component to inject dispatch and state into it
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+export default connect(mapStateToProps)(HomePage);

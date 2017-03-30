@@ -20,6 +20,8 @@ import LeftContainer from 'components/LeftContainerProfile';
 import MainActionContainer from 'components/MainActionContainer';
 import withProgressBar from 'components/ProgressBar';
 import Logo from 'components/Logo/Logo';
+import MobileMenu from 'components/MenuMobile/MenuMobile';
+import SearchBar from 'components/SearchBar/SearchBar';
 
 import FeatureWidget from 'components/FeaturesNav/FeaturesNav';
 import CalendarWidget from 'components/Calendar/Calendar';
@@ -34,22 +36,38 @@ const AppWrapper = styled.div`
   flex-direction: column;
 `;
 
+const MobileWrapper = styled.div`
+  @media screen and (max-width: 360px) {
+    position: absolute;
+    top: 20%;
+    height: 100px;
+    width: 100%;
+    paddin-left: 10%;
+    paddin-right: 10%;
+    display: flex;
+  }
+`;
+
 export function App(props) {
   return (
     <AppWrapper>
       <Helmet
-        titleTemplate="%s - React.js Boilerplate"
-        defaultTitle="React.js Boilerplate"
+        titleTemplate="Rockfeller - Tickets for your events"
+        defaultTitle="Rockfeller"
         meta={[
-          { name: 'description', content: 'A React.js Boilerplate application' },
+          { name: 'description', content: 'a ticket online store' },
         ]}
       />
       <Logo />
-      <FeatureWidget />
-      <CalendarWidget />
-      <LanguageOption />
-      {/*<Header />*/}
-      <LeftContainer />
+      <SearchBar />
+      <MobileWrapper>
+        <FeatureWidget />
+        <CalendarWidget />
+        <LanguageOption />
+        <MobileMenu />
+        <LeftContainer />
+      </MobileWrapper>
+      
       {React.Children.toArray(props.children)}
       {/*<Footer />*/}
       {/*<MainActionContainer />*/}

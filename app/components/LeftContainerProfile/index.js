@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { logout } from '../../containers/SignIn/authActions';
 import styled from 'styled-components';
 
-import Logo from '../Logo/Logo';
 import SocialLinks from '../SocialLinks/social_links';
 import ProfileContainer from './profile';
 import LinksContainer from './about_links';
@@ -17,6 +16,13 @@ const Wrapper = styled.div`
   width: 20%;
   padding-left: 4%;
   padding-right: 4%;
+
+  @media screen and (max-width: 360px) {
+    top: 20%;
+    width: 100%;
+    height: 100px;
+    // background-color: yellow;
+  }
 `;
 
 const Button = styled(Link)`
@@ -29,6 +35,11 @@ const Button = styled(Link)`
   font-weight: 600;
   border: 2px solid red;
   text-align: center;
+
+  @media screen and (max-width: 360px) {
+    margin: 8px;
+    float: right;
+  }
 `;
 
 const LogOutButton = styled.button`
@@ -36,6 +47,14 @@ const LogOutButton = styled.button`
   cursor: pointer;
    &:hover {
     color: red;
+  }
+`;
+
+const LogSignButtonDiv = styled.div`
+  @media screen and (max-width: $break-small) {
+    width: 100px;
+    float: none;
+    background-color: red;
   }
 `;
 

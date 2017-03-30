@@ -9,7 +9,10 @@ const Container = styled.div`
     border-radius: 8px;
     border: solid 2px rgb(254,0,0);
     text-align: center;
-        left: 24.4%;
+    left: 24.4%;
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
 `;
 
 const MonthWrap = styled.div`

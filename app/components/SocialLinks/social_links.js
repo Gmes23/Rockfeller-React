@@ -12,6 +12,10 @@ const Wrapper = styled.div`
   height: 40px;
   display: flex;
   margin-top: 30px
+
+  @media screen and (max-width: 360px) {
+    display: none;
+  }
 `;
 
 const IconContainer = styled.div`
@@ -21,6 +25,10 @@ const IconContainer = styled.div`
     border: 2.333px solid black;
     padding: 1px;
     margin-right: 11%;
+
+    @media screen and (max-width: 360px) {
+     display: none;
+    }
 `;
 
 class SocialLinks extends React.Component {

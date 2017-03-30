@@ -12,6 +12,9 @@ const My_logo = styled(Link)`
   outline: 0;
   color: inherit;
   margin: 2%;
+  @media screen and (max-width: 360px) {
+    width: 90px;
+  }
 `;
 
 const Logo_h1 = styled.h1`
@@ -20,6 +23,10 @@ const Logo_h1 = styled.h1`
   font-weight: 600;
   margin-bottom: -10px;
   font-size: 2.37em;
+  @media screen and (max-width: 360px) {
+    font-size: 1.6em;
+    line-height: 46px;
+  }
 `;
 
 const Span_text = styled.span`

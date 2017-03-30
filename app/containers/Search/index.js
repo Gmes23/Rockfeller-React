@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
  export class SearchEvent extends React.Component {
     componentDidMount() {
       if (this.props.event && this.props.event.trim().length > 0) {
-      this.props.onSubmitForm();
+      /*this.props.onSubmitForm();
       }
     }
 
@@ -36,6 +36,6 @@ export function mapDispatchToProps(dispatch) {
       dispatch(loadEvents());
     },
   };
-}
+}*/
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);

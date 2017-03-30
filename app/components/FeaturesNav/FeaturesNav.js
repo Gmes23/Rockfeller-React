@@ -8,6 +8,13 @@ const Container = styled.div`
   height: 100%;
   width: 125px;
   margin-left: 8%;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+
+  @media screen and (max-width: 1168px) {
+    display: none;
+  }
 `;
 
 const BottomContainer = styled.div`

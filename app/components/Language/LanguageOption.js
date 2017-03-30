@@ -9,6 +9,14 @@ const Container = styled.div`
   width: 130px;
   padding-top: 64.8px;
   margin-left: 3%;
+
+  @media screen and (max-width: 360px) {
+    display: none;
+  }
+
+   @media screen and (max-width: 1410px) {
+    display: none;
+  }
 `;
 
 const BottomContainer = styled.div`

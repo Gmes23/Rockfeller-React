@@ -5,6 +5,10 @@ import HomePageResult from './homepage_result';
 
 const Container = styled.div`
   width: 100%;
+
+  @media screen and (max-width: 360px) {
+    display: none;
+  }
 `;
 
 const CurrentActions = styled.div`

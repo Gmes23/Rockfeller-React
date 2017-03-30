@@ -34,10 +34,18 @@ injectGlobal`
 
   .expanded-ticket {
     height: 550px;
+
+    @media screen and (max-width: 360px) {
+     height: 300px;
+    }
   }
 
   .normal-ticket {
     height: 210px;
+
+    @media screen and (max-width: 360px) {
+     height: 110px;
+   }
   }
 
   a, a:hover, a:active, a:visited {

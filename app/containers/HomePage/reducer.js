@@ -17,10 +17,13 @@ import {
 
 // The initial state of the App
 const initialState = fromJS({
-  username: 'all',
+  username: 'music',
 });
 
+
+
 function homeReducer(state = initialState, action) {
+
   switch (action.type) {
     case CHANGE_USERNAME:
 

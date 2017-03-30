@@ -11,31 +11,20 @@ const Wrapper = styled.div`
   width: 86.69%;
   padding-right: 4%;
   padding-left: 153px;
+
+  @media screen and (max-width: 360px) {
+    padding-left: 0px;
+    width: 100%;
+    top: 190px;
+  }
 `;
 
 class MainActionContainer extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-
           <Wrapper> 
              <HomePage />
           </Wrapper>
-  
-      
-      // <div> helo </div>
-      /*<div>
-        <A href="https://twitter.com/mxstbr">
-          <Img src={Banner} alt="react-boilerplate - Logo" />
-        </A>
-        <NavBar>
-          <HeaderLink to="/">
-            <FormattedMessage {...messages.home} />
-          </HeaderLink>
-          <HeaderLink to="/features">
-            <FormattedMessage {...messages.features} />
-          </HeaderLink>
-        </NavBar>
-      </div>*/
     );
   }
 }

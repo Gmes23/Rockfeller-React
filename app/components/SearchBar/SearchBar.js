@@ -1,19 +1,68 @@
-import React, { Component } from 'react';
+/*
+ * searchBar
+ *
+ * This is the first thing users see of our App, at the '/' route
+ */
+
+import React from 'react';
+import Helmet from 'react-helmet';
+import { FormattedMessage } from 'react-intl';
+import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { makeSelectRepos, makeSelectLoading, makeSelectError } from 'containers/App/selectors2';
+import { browserHistory } from 'react-router';
+
+import { makeSelectRepos, makeSelectLoading, makeSelectError } from 'containers/App/selectors';
+import H2 from 'components/H2';
+import ReposList from 'components/ReposList';
+import AtPrefix from './AtPrefix';
+import CenteredSection from './CenteredSection';
+import Form from './Form';
+import Input from './Input';
+import Section from './Section';
+import messages from './messages';
+import { loadRepos } from '../../containers/App/actions';
+import { changeUsername } from './actions';
+import { makeSelectUsername } from './selectors';
+
+import ActionBar from 'components/MainActionContainer/homepage';
+
+
 
 import styled from 'styled-components';
 
-const Container = styled.div`
-  height: 100%;
-  width: 54%;
-  padding-top: 7px;
-  margin-left: 5px;
+const SearchWrapper = styled.div`
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  padding-left: 4%;
+  padding-right: 4%;
+  padding-top: 30px;
+  padding-bottom: 60px;
+  height: 200px;
   display: flex;
+  @media screen and (max-width: 360px) {
+    width: 82%;
+    position: absolute;
+    top: -21px;
+    right: 0px;
+    height: 200px;
+    padding-left: 4%;
+    padding-right: 4%;
+    padding-bottom: 60px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+  }
 `;
 
 const InputSearch = styled.input`
-  width: 72%;
+  width: 90%;
   height: 100%;
   text-align: end;
   color: gray;
@@ -27,68 +76,86 @@ const InputSearch = styled.input`
   font-style: normal;
   font-weight: 100;
   margin-left: 10%;
-  z-index: 1000;
+
+  &:hover {
+     background-color: #fff; 
+  }
+
 `;
 
 const InputIcon = styled.div`
-   float: right;
-   height: 100%;
-   margin-left: 5%;
-   width: 11%;
-   border-bottom: 2px solid red;
-   padding-top: 40px;
+  float: right;
+  height: 100%;
+  margin-left: 5%;
+  width: 11%;
+  border-bottom: 2px solid red;
+  padding-top: 40px;
+
+  @media screen and (max-width: 360px) {
+     padding-top: 60px;
+  } 
 `;
 
 const Icon_eyeglass = styled.a`
   font-size: 3.5em;
+
+  @media screen and (max-width: 360px) {
+     font-size: 2.2em;
+  }
 `;
 
 
 
-export class SearchBar extends Component {
+
+export class SearchBar extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+  /**
+   * when initial state artist is not null, submit the form to load repos
+   * 
+   */
   componentDidMount() {
-    if (this.props.artist && this.props.artist.trim().length > 0) {
+    if (this.props.username && this.props.username.trim().length > 0) {
       this.props.onSubmitForm();
     }
   }
-
+ 
   render() {
-    const { loading, error, artistevents } = this.props;
-    const artisteventsListProps = {
+    const { loading, error, repos } = this.props;
+    const reposListProps = {
       loading,
       error,
-      artistevents,
+      repos,
     };
 
-
     return (
-        <Container>
-          {/*<InputSearch placeholder="Search" type="text" />
-          <InputIcon>
-            <Icon_eyeglass className="material-icons">search</Icon_eyeglass>
-           </InputIcon>*/}
-
-              
-            <form onSubmit={this.props.onSubmitForm}>
-              <label htmlFor="artist">
+      <div>
+        <Helmet
+          title="Home Page"
+          meta={[
+            { name: 'description', content: 'Search upcoming concerts by your favorite Artist' },
+          ]}
+        />
+        
+        <SearchWrapper>
+            <form onSubmit={this.props.onSubmitForm} autoComplete="off">
+              <label htmlFor="username">
                 <InputSearch
-                  id="Artist"
+                  id="username"
                   type="text"
                   placeholder="Search"
-                  value={this.props.artist}
-                  onChange={this.props.onChangeArtist}
+                  value={this.props.username} 
+                  onChange={this.props.onChangeUsername} 
+                  autoComplete="off"
                 />
-                <InputIcon>
-                  <Icon_eyeglass className="material-icons">search</Icon_eyeglass>
-                </InputIcon>
               </label>
             </form>
-        </Container>
-        );
+             <InputIcon>
+                  <Icon_eyeglass className="material-icons">search</Icon_eyeglass>
+             </InputIcon>
+        </SearchWrapper>
+      </div>
+    );
   }
 }
-
-
 
 SearchBar.propTypes = {
   loading: React.PropTypes.bool,
@@ -96,31 +163,33 @@ SearchBar.propTypes = {
     React.PropTypes.object,
     React.PropTypes.bool,
   ]),
-   artistevents: React.PropTypes.oneOfType([
+  repos: React.PropTypes.oneOfType([
     React.PropTypes.array,
     React.PropTypes.bool,
   ]),
   onSubmitForm: React.PropTypes.func,
-  artist: React.PropTypes.string,
-  onChangeArtist: React.PropTypes.func,
+  username: React.PropTypes.string,
+  onChangeUsername: React.PropTypes.func,
 };
 
+export function mapDispatchToProps(dispatch) {
+  return {
+    onChangeUsername: (evt) => dispatch(changeUsername(evt.target.value)),
+    onSubmitForm: (evt) => {
+      if (evt !== undefined && evt.preventDefault) evt.preventDefault();
+      dispatch(loadRepos())
+      console.log(username.value);
+      username.valie = "";
+    },
+  };
+}
 
-// export function mapDispatchToProps(dispatch) {
-//   return {
-//     onChangeArtist: (evt) => dispatch(changeArtist(evt.target.value)),
-//     onSubmitForm: (evt) => {
-//       if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-//       dispatch(loadRepos());
-//     },
-//   };
-// }
+const mapStateToProps = createStructuredSelector({
+  repos: makeSelectRepos(),
+  username: makeSelectUsername(),
+  loading: makeSelectLoading(),
+  error: makeSelectError(),
+});
 
-// const mapStateToProps = createStructuredSelector({
-//   artistevents: makeSelectArtistEvents(),
-//   artist: makeSelectArtist(),
-//   loading: makeSelectLoading(),
-//   error: makeSelectError(),
-// });
-
-export default SearchBar;
+// Wrap the component to inject dispatch and state into it
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);

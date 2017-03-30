@@ -38,17 +38,34 @@ const DateResultWrap = styled.div`
   background-color: red;
   text-align: center;
   padding-top: 30px;
+
+
+  @media screen and (max-width: 360px) {
+    height: 110px;
+    width: 20%;
+    padding-top: 10px;
+  }
 `;
 
 const ResultImgWrap = styled.div`
   height: 100%;
   width: 55%;
+
+
+  @media screen and (max-width: 360px) {
+    width: 80%; 
+  }
 `;
 
 const ResultDescriptionWrap = styled.div`
   width: 34%;
   height: 100%;
   overflow: hidden;
+
+
+  @media screen and (max-width: 360px) {
+    display: none; 
+  }
 `;
 
 const DescriptionTitle = styled.div`
@@ -87,6 +104,8 @@ const ResultDescriptionPCont = styled.div`
   font-style: normal;
   font-weight: 600;
   font-size: .8em;
+
+
  `;
 
  const DateResult_h1 = styled.h1`
@@ -94,6 +113,10 @@ const ResultDescriptionPCont = styled.div`
   margin: 0px;
   font-size: 3.3em;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  @media screen and (max-width: 360px) {
+    font-size: 2em;    
+  }
  `;
 
   const DateResult_p = styled.p`
@@ -102,6 +125,10 @@ const ResultDescriptionPCont = styled.div`
   font-weight: 600;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: .8em;
+
+  @media screen and (max-width: 360px) {
+    font-size: .5em;
+  }  
  `;
 
   const DateResult_p2 = styled.p`
@@ -112,6 +139,10 @@ const ResultDescriptionPCont = styled.div`
   font-weight: 400;
   font-size: 12px;
   margin-top: 10px;
+
+  @media screen and (max-width: 360px) {
+    font-size: .5em;
+   }  
  `;
 
   const DateResult_p3 = styled.p`
@@ -120,6 +151,10 @@ const ResultDescriptionPCont = styled.div`
   font-family: tablet-gothic, sans-serif;
   font-style: normal;
   font-weight: 400;
+
+  @media screen and (max-width: 360px) {
+    font-size: .5em;
+   }  
  `;
 
 
@@ -132,6 +167,10 @@ const ResultDescriptionPCont = styled.div`
 const SpanDiv = styled.div`
   width: 100%;
   padding-right: 15%;
+
+  @media screen and (max-width: 360px) {
+    padding-right: 30%;
+  }  
 `;
 
 const PlaceDescription = styled.p`

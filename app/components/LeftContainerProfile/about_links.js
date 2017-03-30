@@ -10,6 +10,10 @@ const Container = styled.div`
   width: 145px;
   padding-left: 15px;
   margin-top: 40px;
+
+  @media screen and (max-width: 360px) {
+    display: none;
+  }
 `;
 
 const Alink = styled(Link)`
