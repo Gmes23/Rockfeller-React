@@ -13,7 +13,7 @@ const Wrapper = styled.div`
   display: flex;
   margin-top: 30px
 
-  @media screen and (max-width: 360px) {
+  @media screen and (max-width: 460px) {
     display: none;
   }
 `;
@@ -26,7 +26,7 @@ const IconContainer = styled.div`
     padding: 1px;
     margin-right: 11%;
 
-    @media screen and (max-width: 360px) {
+    @media screen and (max-width: 460px) {
      display: none;
     }
 `;

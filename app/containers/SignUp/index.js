@@ -7,18 +7,35 @@ import { userSignupRequest, isUserExists } from './actions';
 
 import validateInput from '../../../server/middlewares/routes/shared/validation/signupvalidation';
 
+import { Link } from 'react-router';
 
+const ButtonBack = styled(Link)`
+    position: absolute;
+    height: 50px;
+    padding-top: 1.5vh;
+    width: 100px;
+    text-align: center;
+    border: 2px solid red;
+    bottom: 2vh;
+    margin: -.6vh;
+`;
+
+const SignUpPage = styled.div`
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+`;
 
 const RegisterInput = styled.input`
     border-bottom: 2px solid red;
     margin: 20px;
-
 `;
 
 const Form = styled.form`
     position: absolute;
-    top: 30%;
-    left: 30%;
+    top: 30vh;
+    left: 20vw;
 `;
 
 const Button = styled.button`
@@ -27,12 +44,17 @@ const Button = styled.button`
     width: 100px;
     height: 50px;
     margin: 10px;
+    cursor: pointer;
 `;
 
 const AlertWrongInput = styled.div`
     color: red;
     position: relative;
     margin: 1%;
+`;
+
+const ButtonHolder = styled.div`
+
 `;
 
 class SignupForm extends React.Component {
@@ -105,7 +127,9 @@ class SignupForm extends React.Component {
         const { errors } = this.state;
 
         return (
+          <SignUpPage>
             <Form onSubmit={this.onSubmit}>
+              <h1> Join Our Community </h1>
                 <RegisterInput
                 type="text"
                 name="screenname"
@@ -142,9 +166,13 @@ class SignupForm extends React.Component {
                 onChange={this.onChange}
                 />
                   {errors.passwordConfirmation && <AlertWrongInput> { errors.passwordConfirmation } </AlertWrongInput>}
-
-                <Button disabled={this.state.isLoading || this.state.invalid }> Register </Button>
+                
+                <ButtonHolder>
+                  <Button disabled={this.state.isLoading || this.state.invalid }> Register </Button>
+                  <ButtonBack to='/'> Back </ButtonBack>
+                </ButtonHolder>
             </Form> 
+          </SignUpPage>
         )
     }
 }

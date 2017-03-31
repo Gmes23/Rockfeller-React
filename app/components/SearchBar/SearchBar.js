@@ -1,9 +1,3 @@
-/*
- * searchBar
- *
- * This is the first thing users see of our App, at the '/' route
- */
-
 import React from 'react';
 import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
@@ -11,7 +5,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { browserHistory } from 'react-router';
 
-import { makeSelectRepos, makeSelectLoading, makeSelectError } from 'containers/App/selectors';
+import { makeSelectListResults, makeSelectLoading, makeSelectError } from 'containers/App/selectors';
 import H2 from 'components/H2';
 import ReposList from 'components/ReposList';
 import AtPrefix from './AtPrefix';
@@ -20,9 +14,9 @@ import Form from './Form';
 import Input from './Input';
 import Section from './Section';
 import messages from './messages';
-import { loadRepos } from '../../containers/App/actions';
-import { changeUsername } from './actions';
-import { makeSelectUsername } from './selectors';
+import { loadListResults } from '../../containers/App/actions';
+import { changeSearchValue } from './actions';
+import { makeSelectSearchValue } from './selectors';
 
 import ActionBar from 'components/MainActionContainer/homepage';
 
@@ -40,7 +34,7 @@ const SearchWrapper = styled.div`
   padding-bottom: 60px;
   height: 200px;
   display: flex;
-  @media screen and (max-width: 360px) {
+  @media screen and (max-width: 460px) {
     width: 82%;
     position: absolute;
     top: -21px;
@@ -91,7 +85,7 @@ const InputIcon = styled.div`
   border-bottom: 2px solid red;
   padding-top: 40px;
 
-  @media screen and (max-width: 360px) {
+  @media screen and (max-width: 460px) {
      padding-top: 60px;
   } 
 `;
@@ -99,7 +93,7 @@ const InputIcon = styled.div`
 const Icon_eyeglass = styled.a`
   font-size: 3.5em;
 
-  @media screen and (max-width: 360px) {
+  @media screen and (max-width: 460px) {
      font-size: 2.2em;
   }
 `;
@@ -113,17 +107,17 @@ export class SearchBar extends React.PureComponent { // eslint-disable-line reac
    * 
    */
   componentDidMount() {
-    if (this.props.username && this.props.username.trim().length > 0) {
+    if (this.props.searchvalue && this.props.searchvalue.trim().length > 0) {
       this.props.onSubmitForm();
     }
   }
  
   render() {
-    const { loading, error, repos } = this.props;
-    const reposListProps = {
+    const { loading, error, listresults } = this.props;
+    const resultListProps = {
       loading,
       error,
-      repos,
+      listresults,
     };
 
     return (
@@ -137,13 +131,13 @@ export class SearchBar extends React.PureComponent { // eslint-disable-line reac
         
         <SearchWrapper>
             <form onSubmit={this.props.onSubmitForm} autoComplete="off">
-              <label htmlFor="username">
+              <label htmlFor="searchvalue">
                 <InputSearch
-                  id="username"
+                  id="searchvalue"
                   type="text"
                   placeholder="Search"
-                  value={this.props.username} 
-                  onChange={this.props.onChangeUsername} 
+                  value={this.props.searchvalue} 
+                  onChange={this.props.onChangeSearchValue} 
                   autoComplete="off"
                 />
               </label>
@@ -163,33 +157,32 @@ SearchBar.propTypes = {
     React.PropTypes.object,
     React.PropTypes.bool,
   ]),
-  repos: React.PropTypes.oneOfType([
+  listresults: React.PropTypes.oneOfType([
     React.PropTypes.array,
     React.PropTypes.bool,
   ]),
   onSubmitForm: React.PropTypes.func,
-  username: React.PropTypes.string,
-  onChangeUsername: React.PropTypes.func,
+  searchvalue: React.PropTypes.string,
+  onChangeSearchValue: React.PropTypes.func,
 };
 
 export function mapDispatchToProps(dispatch) {
   return {
-    onChangeUsername: (evt) => dispatch(changeUsername(evt.target.value)),
+    onChangeSearchValue: (evt) => dispatch(changeSearchValue(evt.target.value)),
     onSubmitForm: (evt) => {
       if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-      dispatch(loadRepos())
-      console.log(username.value);
-      username.valie = "";
+      dispatch(loadListResults())
     },
   };
 }
 
 const mapStateToProps = createStructuredSelector({
-  repos: makeSelectRepos(),
-  username: makeSelectUsername(),
+  listresults: makeSelectListResults(),
+  searchvalue: makeSelectSearchValue(),
   loading: makeSelectLoading(),
   error: makeSelectError(),
 });
 
 // Wrap the component to inject dispatch and state into it
 export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
+

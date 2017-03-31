@@ -3,13 +3,31 @@ import TextFieldGroup from 'components/common/TextFieldGroup';
 import validateInput from '../../../server/middlewares/routes/shared/validation/loginvalidation';
 import { connect } from 'react-redux';
 import { login } from './authActions';
-
+import { Link } from 'react-router';
 import styled from 'styled-components';
+
+
+const SignInPage = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  background-color: white;
+`;
+
+const ButtonBack = styled(Link)`
+    position: absolute;
+    height: 50px;
+    padding-top: 1.5vh;
+    width: 100px;
+    text-align: center;
+    border: 2px solid red;
+    margin-left: 10%;
+`;
 
 const Form = styled.form`
     position: absolute;
-    left: 40%;
-    top: 30%;
+    left: 20vw;
+    top: 25vh;
 `;
 
 const Button = styled.button`
@@ -26,6 +44,15 @@ const AlertErrorDiv = styled.div`
     margin: 2%;
     color: red;
 `;
+
+const InputDiv = styled.div`
+  @media screen and (max-width: 460px) {
+    display: table-caption;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+`;
+
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -70,11 +97,13 @@ class LoginForm extends React.Component {
     const { errors, identifier, password, isLoading } = this.state;
 
     return (
+    <SignInPage>
       <Form onSubmit={this.onSubmit}>
         <h1>Login</h1>
 
         { errors.form && <AlertErrorDiv>{errors.form}</AlertErrorDiv> }
 
+      <InputDiv>
         <TextFieldGroup
           field="identifier"
           label="Username / Email"
@@ -82,7 +111,9 @@ class LoginForm extends React.Component {
           error={errors.identifier}
           onChange={this.onChange}
         />
-
+      </InputDiv>
+      
+      <InputDiv>
         <TextFieldGroup
           field="password"
           label="Password"
@@ -91,9 +122,12 @@ class LoginForm extends React.Component {
           onChange={this.onChange}
           type="password"
         />
+      </InputDiv>
 
         <Button disabled={isLoading}>Login</Button>
+        <ButtonBack to="/"> Back </ButtonBack>
       </Form>
+    </SignInPage>
     );
   }
 }

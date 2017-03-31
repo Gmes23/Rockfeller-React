@@ -11,7 +11,7 @@ const Container = styled.div`
   padding-left: 15px;
   margin-top: 40px;
 
-  @media screen and (max-width: 360px) {
+  @media screen and (max-width: 460px) {
     display: none;
   }
 `;

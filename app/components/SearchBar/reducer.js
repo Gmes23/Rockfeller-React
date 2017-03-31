@@ -1,24 +1,25 @@
-// n state.set('yourStateVariable', true);
-//  */
-// import { fromJS } from 'immutable';
+import { fromJS } from 'immutable';
 
-// import {
-//   CHANGE_USERNAME,
-// } from './constants';
+import {
+  CHANGE_SEARCHVALUE,
+} from './constants';
 
-// const initialState = fromJS({
-//   username: 'something',
-// });
+const initialState = fromJS({
+  searchvalue: 'something',
+});
 
-// function homeReducer(state = initialState, action) {
-//   switch (action.type) {
-//     case CHANGE_USERNAME:
+function homeReducer(state = initialState, action) {
+  switch (action.type) {
+    case CHANGE_SEARCHVALUE:
 
-//       return state
-//         .set('username', action.name.replace(/@/gi, ''))
-//     default:
-//       return state
-//   }
-// }
+      return state
+        .set('searchvalue', action.searchname.replace(/@/gi, ''))
+    default:
+      return state
+  }
+}
 
-// export default homeReducer;
+export default homeReducer;
+
+
+

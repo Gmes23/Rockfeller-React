@@ -1,20 +1,9 @@
-/**
- * RepoListItem
- *
- * Lists the name and the issue count of a repository
- */
-
 import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { FormattedNumber } from 'react-intl';
-
-import { makeSelectCurrentUser } from 'containers/App/selectors';
+import { makeSelectCurrentSearchValue } from 'containers/App/selectors';
 import ListItem from 'components/ListItem';
-// import IssueIcon from './IssueIcon';
-// import IssueLink from './IssueLink';
-// import RepoLink from './RepoLink';
-// import Wrapper from './Wrapper';
 
 export class RepoListItem extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -27,10 +16,7 @@ export class RepoListItem extends React.PureComponent { // eslint-disable-line r
         <RepoLink href={item._embedded.venues[0].url} target="_blank">
           {nameprefix + item._embedded.venues[0].name}
         </RepoLink>
-        {/*<IssueLink href={`${item.html_url}/issues`} target="_blank">
-          <IssueIcon />
-          <FormattedNumber value={item.open_issues_count} />
-        </IssueLink>*/}
+     
       </div>
     );
 
@@ -43,9 +29,13 @@ export class RepoListItem extends React.PureComponent { // eslint-disable-line r
 
 RepoListItem.propTypes = {
   item: React.PropTypes.object,
-  currentUser: React.PropTypes.string,
+  currentSearchValue: React.PropTypes.string,
 };
 
 export default connect(createStructuredSelector({
-  currentUser: makeSelectCurrentUser(),
+  currentSearchValue: makeSelectCurrentSearchValue(),
 }))(RepoListItem);
+
+
+
+

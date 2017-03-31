@@ -1,42 +1,39 @@
 /**
- * Gets the repositories of the user from Github
+ * Gets the data from ticketmaster
  */
 
 import { take, call, put, select, cancel, takeLatest } from 'redux-saga/effects';
 import { LOCATION_CHANGE } from 'react-router-redux';
-import { LOAD_REPOS } from 'containers/App/constants';
-import { reposLoaded, repoLoadingError } from 'containers/App/actions';
+import { LOAD_LISTRESULTS } from 'containers/App/constants';
+import { listresultsLoaded, listresultsLoadingError } from 'containers/App/actions';
 
 import request from 'utils/request';
-import { makeSelectUsername } from 'containers/HomePage/selectors';
+import { makeSelectSearchValue } from 'containers/HomePage/selectors';
 
-/**
- * Github repos request/response handler
- */
-export function* getRepos() {
-  // Select username from store
-  const username = yield select(makeSelectUsername());
+export function* getListResults() {
+
+  const searchvalue = yield select(makeSelectSearchValue());
   
 
-  const requestURL = `https://app.ticketmaster.com/discovery/v2/events.json?apikey=ugDKj6qVDvxl39iQzLiY5VR2c173RABy&keyword=${username}&size=5`;
+  const requestURL = `https://app.ticketmaster.com/discovery/v2/events.json?apikey=ugDKj6qVDvxl39iQzLiY5VR2c173RABy&keyword=${searchvalue}&size=5`;
 
   try {
     // Call our request helper (see 'utils/request')
-    const repos = yield call(request, requestURL);
-    yield put(reposLoaded(repos, username));
+    const listresults = yield call(request, requestURL);
+    yield put(listresultsLoaded(listresults, searchvalue));
   } catch (err) {
-    yield put(repoLoadingError(err));
+    yield put(listresultsLoadingError(err));
   }
 }
 
 /**
  * Root saga manages watcher lifecycle
  */
-export function* githubData() {
-  // Watches for LOAD_REPOS actions and calls getRepos when one comes in.
+export function* ticketmasterData() {
+  // Watches for LOAD_LISTRESULTS actions and calls getRepos when one comes in.
   // By using `takeLatest` only the result of the latest API call is applied.
   // It returns task descriptor (just like fork) so we can continue execution
-  const watcher = yield takeLatest(LOAD_REPOS, getRepos);
+  const watcher = yield takeLatest(LOAD_LISTRESULTS, getListResults);
 
   // Suspend execution until location changes
   yield take(LOCATION_CHANGE);
@@ -45,5 +42,7 @@ export function* githubData() {
 
 // Bootstrap sagas
 export default [
-  githubData,
+  ticketmasterData,
 ];
+
+

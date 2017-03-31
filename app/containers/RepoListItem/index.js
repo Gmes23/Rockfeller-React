@@ -1,15 +1,9 @@
-/**
- * RepoListItem
- *
- * Lists the name and the issue count of a repository
- */
-
 import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { FormattedNumber } from 'react-intl';
 
-import { makeSelectCurrentUser } from 'containers/App/selectors';
+import { makeSelectCurrentSearchValue } from 'containers/App/selectors';
 import ListItem from 'components/ListItem';
 import IssueIcon from './IssueIcon';
 import IssueLink from './IssueLink';
@@ -339,9 +333,13 @@ export class RepoListItem extends React.PureComponent { // eslint-disable-line r
 
 RepoListItem.propTypes = {
   item: React.PropTypes.object,
-  currentUser: React.PropTypes.string,
+  currentSearchValue: React.PropTypes.string,
 };
 
 export default connect(createStructuredSelector({
-  currentUser: makeSelectCurrentUser(),
+  currentSearchValue: makeSelectCurrentSearchValue(),
 }))(RepoListItem);
+
+
+
+

@@ -17,7 +17,7 @@ const Wrapper = styled.div`
   padding-left: 4%;
   padding-right: 4%;
 
-  @media screen and (max-width: 360px) {
+  @media screen and (max-width: 460px) {
     top: 20%;
     width: 100%;
     height: 100px;
@@ -36,7 +36,7 @@ const Button = styled(Link)`
   border: 2px solid red;
   text-align: center;
 
-  @media screen and (max-width: 360px) {
+  @media screen and (max-width: 460px) {
     margin: 8px;
     float: right;
   }
@@ -50,13 +50,6 @@ const LogOutButton = styled.button`
   }
 `;
 
-const LogSignButtonDiv = styled.div`
-  @media screen and (max-width: $break-small) {
-    width: 100px;
-    float: none;
-    background-color: red;
-  }
-`;
 
 class LeftContainer extends React.Component { // eslint-disable-line react/prefer-stateless-function
  
