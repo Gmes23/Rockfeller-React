@@ -35,11 +35,11 @@ module.exports = {
   },
 
   production: {
-    client: 'postgresql',
+    client: 'postgres://vucevkaueqacty:6566cc21b4e23b31c6f5e268ce8d3cf47f5042234673fbbf135f7b59bcb6d6e4@ec2-107-22-244-62.compute-1.amazonaws.com:5432/d5tbutstqjfcq3',
     connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
+      database: 'd5tbutstqjfcq3',
+      user:     'vucevkaueqacty',
+      password: '6566cc21b4e23b31c6f5e268ce8d3cf47f5042234673fbbf135f7b59bcb6d6e4'
     },
     pool: {
       min: 2,
