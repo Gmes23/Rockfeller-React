@@ -4,12 +4,10 @@ import TextFieldGroup from 'components/common/TextFieldGroup';
 
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
-
 import { userSignupRequest, isUserExists } from './actions';
-
 import validateInput from '../../../server/middlewares/routes/shared/validation/signupvalidation';
-
 import { Link } from 'react-router';
+import { login } from '../SignIn/authActions';
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -63,19 +61,36 @@ class SignupForm extends React.Component {
     }
   }
 
-  onSubmit(e) {
+  // onSubmit(e) {
+  //   e.preventDefault();
+
+  //   if (this.isValid()) {
+  //     this.setState({ errors: {}, isLoading: true });
+  //     this.props.userSignupRequest(this.state).then(
+  //       () => {
+  //         (res) => this.context.router.push('/');
+  //         },
+  //       (err) => this.setState({ errors: err.response.data, isLoading: false })
+  //     );
+  //   }
+  // }
+
+    onSubmit(e) {
     e.preventDefault();
 
     if (this.isValid()) {
       this.setState({ errors: {}, isLoading: true });
       this.props.userSignupRequest(this.state).then(
         () => {
+          console.log(this.state)
+          login(this.state)
           this.context.router.push('/');
         },
         (err) => this.setState({ errors: err.response.data, isLoading: false })
       );
     }
   }
+
 
   render() {
     const { errors } = this.state;

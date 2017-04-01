@@ -39,9 +39,9 @@ export function listresultsLoaded(listresults, searchvalue) {
  *
  * @return {object}       An action object with a type of LOAD_REPOS_ERROR passing the error
  */
-export function repoLoadingError(error) {
+export function listresultsLoadingError(error) {
   return {
-    type: LOAD_REPOS_ERROR,
+    type: LOAD_LISTRESULTS_ERROR,
     error,
   };
 }

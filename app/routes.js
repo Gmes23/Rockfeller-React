@@ -84,11 +84,102 @@ export default function createRoutes(store) {
       },
     },
     
+      {
+      path: '/info',
+      name: 'info',
+    getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/Info'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([component]) => {
+
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    },
     
+
+      {
+      path: '/booking',
+      name: 'booking',
+    getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/Booking'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([component]) => {
+
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    },
     
+
+      {
+      path: '/updates',
+      name: 'updates',
+    getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/Updates'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([component]) => {
+
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    },
     
-    
-    
+        {
+      path: '/contact',
+      name: 'contact',
+    getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/Contact'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([component]) => {
+
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    },
+
+            {
+      path: '/FAQ',
+      name: 'FAQ',
+    getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/FAQ'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([component]) => {
+
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    },
     
     {
       path: '/features',
@@ -106,59 +197,6 @@ export default function createRoutes(store) {
           .then(loadModule(cb))
           .catch(errorLoading);
       },
-
-
-      // for example's sake, require authentication to see /features
-        // onEnter: requireAuth,
      },
-     
-    //  {
-    //    path: '/login',
-    //    name: 'login',
-    //   getComponent(nextState, cb) {
-    //      System.import('containers/Login')
-    //        .then(loadModule(cb))
-    //        .catch(errorLoading);
-    //    },
-    //  },
-     
-     
-     
-      // {
-      //  path: '/login/callback',
-      //  name: 'loginCallback',
-      //  getComponent(nextState, cb) {
-      //    const importModules = Promise.all([
-      //    System.import('containers/LoginCallback/sagas'),
-      //      System.import('containers/LoginCallback'),
-      //    ]);
- 
-      //   const renderRoute = loadModule(cb);
- 
-      //    importModules.then(([sagas, component]) => {
-      //      injectSagas(sagas.default);
-      //     renderRoute(component);
-      //   });
- 
-      //    importModules.catch(errorLoading);
-      //  },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   ];
 }
