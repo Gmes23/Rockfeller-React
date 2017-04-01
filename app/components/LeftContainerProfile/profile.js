@@ -8,6 +8,12 @@ const Container = styled.div`
   height: 40%;
   width: 145px;
   padding-left: 15px;
+
+  @media screen and (max-width: 460px) {
+    width: 100%;
+    height: 100px;
+    padding-left: 24vw;
+  }
 `;
 
 const Userimg = styled.div`
@@ -16,11 +22,19 @@ const Userimg = styled.div`
   height: 95px; 
   border: 1px solid red;
   background-image: url(./profile.png);
+
+  @media screen and (max-width: 460px) {
+    height: 75px;
+    width: 75px;
+  }
 `;
 
 const Username_container = styled.div`
   width: 100%;
   height: 45px;
+  @media screen and (max-width: 460px) {
+    display: none;
+  }
 `;
 
 const Welcome = styled.p`
@@ -50,6 +64,10 @@ const Profile_icon = styled.div`
   width:100%;
   margin-top: 10px
   vertical-align: text-bottom;
+  
+  @media screen and (max-width: 460px) {
+    display: none;
+  }
 `;
 
 const My_profile = styled.a`

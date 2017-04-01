@@ -21,7 +21,6 @@ const Wrapper = styled.div`
     top: 20%;
     width: 100%;
     height: 100px;
-    // background-color: yellow;
   }
 `;
 
@@ -44,7 +43,9 @@ const Button = styled(Link)`
 
 const LogOutButton = styled.button`
   color: black;
+  font-weight: 600;
   cursor: pointer;
+  margin-left: .5vw;
    &:hover {
     color: red;
   }

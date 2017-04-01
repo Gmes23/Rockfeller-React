@@ -9,9 +9,9 @@ class Booking extends React.PureComponent { // eslint-disable-line react/prefer-
     return (
       <div>
         <Helmet
-          title="Home Page"
+          title="Booking"
           meta={[
-            { name: 'description', content: 'Search upcoming concerts by your favorite Artist' },
+            { name: 'description', content: 'Booking for upcoming concerts by your favorite Artist' },
           ]}
         />
 

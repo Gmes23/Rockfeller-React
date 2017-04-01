@@ -8,12 +8,19 @@ const Container = styled.div`
   height: 100%;
   width: 125px;
   margin-left: 8%;
+
+  // @media screen and (max-width: 460px) {
+  //   display: block;
+  //   right: 0%;
+  //   left: 50vw;
+  //   top: 20px;
+  // }
+
   @media screen and (max-width: 768px) {
     display: none;
   }
 
   @media screen and (max-width: 1168px) {
-    display: none;
   }
 `;
 
@@ -35,20 +42,17 @@ const Logo_h1 = styled.h1`
   font-weight: 600;
   margin-bottom: -10px;
   font-size: .95em;
+
+  @media screen and (max-width: 460px) {
+    font-size: .7em
+    margin-bottom: -16px;
+  }
+
 `;
 
 const Span_text = styled.span`
   border-bottom: solid 2px #fe0000;
   display: inherit;
-`;
-
-const Logo_h2 = styled.h2`
-  font-family: tablet-gothic, sans-serif;
-  font-style: normal;
-  font-weight: 600;
-  margin-bottom: -10px;
-  font-size: 4em;
-  margin-top: 0px;
 `;
 
 const Select_option = styled.p`
@@ -59,7 +63,11 @@ const Select_option = styled.p`
   color: red;
   margin: 0px;
   float: left;
-`
+
+  @media screen and (max-width: 460px) {
+    font-size: .7em
+  }
+`;
 
 const Select_option_2 = styled.p`
   font-family: tablet-gothic, sans-serif;
@@ -70,7 +78,11 @@ const Select_option_2 = styled.p`
   margin: 0px;
   margin-left: 12%;
   float: right;
-`
+   
+  @media screen and (max-width: 460px) {
+    font-size: .7em
+  }
+`;
 
 class FeatureWidget extends Component {
   render() {

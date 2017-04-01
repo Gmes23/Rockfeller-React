@@ -8,6 +8,46 @@ import { userSignupRequest, isUserExists } from './actions';
 import validateInput from '../../../server/middlewares/routes/shared/validation/signupvalidation';
 import { Link } from 'react-router';
 import { login } from '../SignIn/authActions';
+import styled from 'styled-components';
+
+const SignUpPage = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  background-color: white;
+`;
+
+
+const Form = styled.form`
+  position: absolute;
+  top: 20%;
+  left: 15vw;
+`;
+
+const InputDiv = styled.div`
+  // display: table-caption;
+`;
+
+const Button = styled.button`
+  width: 100px;
+  height: 50px;
+  color: white;
+  background-color: red;
+`;
+
+const ButtonBack = styled(Link)`
+  position: absolute;
+  height: 50px;
+  padding-top: 1.5vh;
+  width: 100px;
+  text-align: center;
+  border: 2px solid red;
+  margin-left: 35%;
+`;
+
+const ButtonHolder = styled.div `
+  display: flex;
+`;
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -61,20 +101,6 @@ class SignupForm extends React.Component {
     }
   }
 
-  // onSubmit(e) {
-  //   e.preventDefault();
-
-  //   if (this.isValid()) {
-  //     this.setState({ errors: {}, isLoading: true });
-  //     this.props.userSignupRequest(this.state).then(
-  //       () => {
-  //         (res) => this.context.router.push('/');
-  //         },
-  //       (err) => this.setState({ errors: err.response.data, isLoading: false })
-  //     );
-  //   }
-  // }
-
     onSubmit(e) {
     e.preventDefault();
 
@@ -82,8 +108,6 @@ class SignupForm extends React.Component {
       this.setState({ errors: {}, isLoading: true });
       this.props.userSignupRequest(this.state).then(
         () => {
-          console.log(this.state)
-          login(this.state)
           this.context.router.push('/');
         },
         (err) => this.setState({ errors: err.response.data, isLoading: false })
@@ -96,18 +120,22 @@ class SignupForm extends React.Component {
     const { errors } = this.state;
  
     return (
-      <form onSubmit={this.onSubmit}>
+    <SignUpPage>
+      <Form onSubmit={this.onSubmit}>
         <h1>Join our community!</h1>
 
+      <InputDiv>
         <TextFieldGroup
           error={errors.screenname}
-          label="screenname"
+          label="Username"
           onChange={this.onChange}
           checkUserExists={this.checkUserExists}
           value={this.state.screenname}
           field="screenname"
         />
+      </InputDiv>
 
+      <InputDiv>
         <TextFieldGroup
           error={errors.email}
           label="Email"
@@ -116,7 +144,9 @@ class SignupForm extends React.Component {
           value={this.state.email}
           field="email"
         />
+      </InputDiv>
 
+      <InputDiv>
         <TextFieldGroup
           error={errors.password}
           label="Password"
@@ -125,7 +155,9 @@ class SignupForm extends React.Component {
           field="password"
           type="password"
         />
+      </InputDiv>
 
+      <InputDiv>
         <TextFieldGroup
           error={errors.passwordConfirmation}
           label="Password Confirmation"
@@ -134,14 +166,17 @@ class SignupForm extends React.Component {
           field="passwordConfirmation"
           type="password"
         />
+      </InputDiv>
 
-
-        <div className="form-group">
-          <button disabled={this.state.isLoading || this.state.invalid} className="btn btn-primary btn-lg">
+        <ButtonHolder>
+          <Button disabled={this.state.isLoading || this.state.invalid} className="btn btn-primary btn-lg">
             Sign up
-          </button>
-        </div>
-      </form>
+          </Button>
+          <ButtonBack to="/"> Back </ButtonBack>
+        </ButtonHolder>
+
+      </Form>
+    </SignUpPage>
     );
   }
 }
