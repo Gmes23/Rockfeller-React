@@ -10,7 +10,7 @@ import { makeSelectSearchValue } from 'containers/HomePage/selectors';
  * Github repos request/response handler
  */
 export function* getListResults() {
-  // Select username from store
+  // Select searchvalue from store
   const searchvalue = yield select(makeSelectSearchValue());
   
 

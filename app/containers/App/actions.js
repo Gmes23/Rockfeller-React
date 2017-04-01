@@ -20,7 +20,7 @@ export function loadListResults() {
  * Dispatched when the listresults are loaded by the request saga
  *
  * @param  {array} listresults The repository data
- * @param  {string} searchvalue The current username
+ * @param  {string} searchvalue The current searchvalue
  *
  * @return {object}      An action object with a type of LOAD_REPOS_SUCCESS passing the repos
  */
