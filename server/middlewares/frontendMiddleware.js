@@ -14,7 +14,7 @@ const addDevMiddlewares = (app, webpackConfig) => {
     noInfo: true,
     publicPath: webpackConfig.output.publicPath,
     silent: true,
-    stats: true,
+    stats: 'errors-only',
   });
 
   app.use(middleware);
