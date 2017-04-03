@@ -339,7 +339,3 @@ RepoListItem.propTypes = {
 export default connect(createStructuredSelector({
   currentSearchValue: makeSelectCurrentSearchValue(),
 }))(RepoListItem);
-
-
-
-

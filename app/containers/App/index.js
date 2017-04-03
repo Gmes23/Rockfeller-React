@@ -69,8 +69,6 @@ export function App(props) {
       </MobileWrapper>
       
       {React.Children.toArray(props.children)}
-      {/*<Footer />*/}
-      {/*<MainActionContainer />*/}
     </AppWrapper>
   );
 }
