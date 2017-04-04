@@ -89,11 +89,6 @@ module.exports = (options) => ({
       'main',
     ],
   },
-  node: {
-      net: 'empty',
-      dns: 'empty'
-  },
-  // might need to take this out 
   devtool: options.devtool,
   target: 'web', // Make web variables accessible to webpack, e.g. window
   performance: options.performance || {},
