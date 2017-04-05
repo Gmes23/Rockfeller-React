@@ -1,5 +1,5 @@
 const express = require('express');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const User = require('../../database/model/user');
 const jwt = require('jsonwebtoken');
 const config = require('./shared/validation/config')
