@@ -87,7 +87,11 @@ module.exports = (options) => ({
       'browser',
       'jsnext:main',
       'main',
-    ],
+    ], 
+  },
+    node: {
+      net: 'empty',
+      dns: 'empty'
   },
   devtool: options.devtool,
   target: 'web', // Make web variables accessible to webpack, e.g. window
