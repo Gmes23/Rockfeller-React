@@ -16,7 +16,10 @@ import { applyRouterMiddleware, Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import FontFaceObserver from 'fontfaceobserver';
 import { useScroll } from 'react-router-scroll';
+import setAuthorizationToken from './utils/setAuthorizationToken';
+import jwt from 'jsonwebtoken';
 import 'sanitize.css/sanitize.css';
+import { setCurrentUser } from './containers/SignIn/authActions';
 
 // Import root app
 import App from 'containers/App';
@@ -66,9 +69,6 @@ const store = configureStore(initialState, browserHistory);
 
 
 // we set the authorization token here so its available on the first login
-import setAuthorizationToken from './utils/setAuthorizationToken';
-import jwt from 'jsonwebtoken';
-import { setCurrentUser } from './containers/SignIn/authActions';
 
 if (localStorage.jwtToken) {
   setAuthorizationToken(localStorage.jwtToken);
