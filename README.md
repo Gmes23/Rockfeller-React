@@ -38,13 +38,13 @@ If you wish to clone the app down to your local machine...
 ![Main](screenshots/main.jpg)
 
 ### Animation made easy with react
-![Openmain](creenshots/openmain.jpg)
+![Openmain](screenshots/openmain.jpg)
 
 ### Search for tickets of your favorite artist
 ![BrunoSearch](screenshots/brunosearch.png)
 
 ### Mobile Look
-![MobileSearch](screenshots/rockgeneremobile.png.png)
+![MobileSearch](screenshots/rockgenremobile.png)
 
 
 ## Current version details
