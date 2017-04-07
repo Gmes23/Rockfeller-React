@@ -105,4 +105,4 @@ If you wish to clone the app down to your local machine...
 
 ## Authors
 
-* **Gerardo Mestanza** - *Solo Project* - [PurpleBooth](https://github.com/Gmes23)
+* **Gerardo Mestanza** - *Solo Project* - [GerardoM](https://github.com/Gmes23)
