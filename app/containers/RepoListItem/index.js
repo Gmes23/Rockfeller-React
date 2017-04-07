@@ -267,6 +267,12 @@ export class RepoListItem extends React.PureComponent { // eslint-disable-line r
         }
     }
 
+    if (items.pleaseNote == false ) {
+      return false
+    } else {
+      return items.pleaseNote
+    }
+
     
  
     // Put together the content of the search
@@ -308,7 +314,7 @@ export class RepoListItem extends React.PureComponent { // eslint-disable-line r
                   <BuyDiv>
                     <DoorsPrice>
                       Ticket:  ${minPrice} - ${maxPrice}
-                      <br />
+                      <Br />
                       Doors: {item.dates.start.localTime}
                     </DoorsPrice>
 
