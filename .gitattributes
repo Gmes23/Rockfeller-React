@@ -77,8 +77,7 @@ Procfile text
 
 # Documentation
 *.md text
-LICENSE text
-AUTHORS text
+
 
 
 #

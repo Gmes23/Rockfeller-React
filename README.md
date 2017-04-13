@@ -18,7 +18,7 @@ Although the application is far from finish you can view a small demo here
 ## Functionality
 On the Front End, the app uses `React` JavaScript Framework with `React Router` and `Redux`. And for styling, `styled-components` so our styling only loads with its respective react component.
 
-On the Back End, the app uses `NodeJS`. For the database I am using `postgreSQl`. Naturally, `Express` is used as the router, and `bcrypt-js` for hashing user passwords.Additionally I am using `redux-saga` that allows us to manipulate our api data from `ticketmaster`.
+On the Back End, the app uses `NodeJS`. For the database I am using `postgreSQL`. Naturally, `Express` is used as the router, and `bcrypt-js` for hashing user passwords. Additionally I am using `redux-saga` that allows for manipulation of the api data from `ticketmaster`.
 
 
 
