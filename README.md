@@ -62,7 +62,7 @@ If you wish to clone the app down to your local machine...
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-polyfill": "6.20.0",
     "bcryptjs": "^2.4.3",
-    "bcrypt": "1.0.2",
+    "bcrypt": "3.0.7",
     "bluebird": "^3.5.0",
     "body-parser": "^1.17.1",
     "bookshelf": "^0.10.3",

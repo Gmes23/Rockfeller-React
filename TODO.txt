@@ -1,0 +1,2 @@
+- I delete material icons from package.json 
+"material-icons": "^0.1.0",
